@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resumo para prova — Business Intelligence</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #17283b; background: #f5f7fa; }
+    * { box-sizing: border-box; }
+    body { margin: 0; line-height: 1.72; font-size: 19px; }
+    main { max-width: 850px; margin: auto; padding: 2rem 1.25rem 5rem; background: white; }
+    h1, h2, h3 { line-height: 1.25; color: #10375b; }
+    h1 { font-size: 2.2rem; margin-bottom: .4rem; }
+    h2 { font-size: 1.7rem; margin-top: 2.8rem; border-top: 2px solid #d9e5ee; padding-top: 1.5rem; }
+    h3 { font-size: 1.22rem; margin-top: 1.8rem; }
+    p, li { max-width: 72ch; }
+    li { margin: .45rem 0; }
+    .lead { font-size: 1.15rem; color: #34536a; }
+    .box { background: #edf5fa; border-left: 5px solid #23668a; padding: .8rem 1.2rem; margin: 1.5rem 0; }
+    .example { background: #f5f5e9; border-left-color: #8a681d; }
+    strong { color: #0b3f69; }
+    .source { font-size: .9rem; color: #455869; }
+    :focus-visible { outline: 3px solid #c24700; outline-offset: 3px; }
+    @media print { body { font-size: 12pt; background: white; } main { max-width: none; padding: 0; } h2 { break-after: avoid; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Business Intelligence: resumo completo para a prova</h1>
+    <p class="lead">Uma leitura contínua dos quatro PDFs, em linguagem direta. Você pode começar aqui e seguir até o fim com um leitor por voz. As siglas são explicadas quando aparecem.</p>
+    <p class="source">Base: <cite>Business Intelligence</cite>, <cite>Data Warehouse</cite>, <cite>Data Mining</cite> e <cite>Implantação do Business Intelligence</cite>, PDFs da disciplina. As páginas indicadas ao longo do texto são as páginas impressas nos materiais.</p>
+  </header>
+
+  <section aria-labelledby="visao">
+    <h2 id="visao">1. A ideia central antes dos detalhes</h2>
+    <p>Imagine uma rede de lojas que registra cada venda. Uma linha com data, produto, loja, cliente, quantidade e preço é um <strong>dado</strong>. Quando essas linhas são organizadas para mostrar que as vendas de um produto caíram 20% em determinado mês, temos uma <strong>informação</strong>. Ao relacionar essa queda com falta de estoque, preço e concorrência, a empresa constrói <strong>conhecimento</strong>. A decisão pode ser corrigir o abastecimento. Esse percurso é a essência do <strong>Business Intelligence</strong>, ou BI: captar, integrar, tratar, analisar e apresentar dados para apoiar decisões.</p>
+    <p>O <strong>Data Warehouse</strong>, ou DW, é o ambiente que reúne dados de várias fontes e conserva histórico para análise. O <strong>Data Mining</strong>, ou mineração de dados, procura padrões, relações e previsões nesses dados. A <strong>implantação de BI</strong> é o projeto que define perguntas de negócio, pessoas, fontes, indicadores, ferramentas, treinamento e melhoria contínua. Assim, BI é o processo amplo; DW organiza uma base analítica; mineração descobre padrões; painéis e relatórios comunicam resultados.</p>
+    <div class="box example"><p><strong>Exemplo que acompanhará o resumo.</strong> A rede quer reduzir perdas de clientes. Seu ERP registra vendas e estoque; seu CRM registra contatos com clientes. Os dados são padronizados e carregados no DW. Uma análise mostra queda de compras em certas regiões. A mineração identifica um grupo de clientes com alta chance de abandono. Um painel mostra o indicador de retenção. A gestão testa uma ação de atendimento, mede o resultado e ajusta a estratégia.</p></div>
+  </section>
+
+  <section aria-labelledby="fundamentos">
+    <h2 id="fundamentos">2. Fundamentos de Business Intelligence</h2>
+    <p>BI apoia decisões mais rápidas e fundamentadas, planejamento, acompanhamento de desempenho, controle de custos, identificação de riscos e oportunidades, melhoria do atendimento e otimização de processos. O benefício depende da qualidade dos dados e de perguntas úteis. Um gráfico bonito com dados errados pode levar a uma decisão errada.</p>
+    <p>Os quatro pilares apresentados na unidade 1 são: <strong>arquitetura e processo</strong>, que abrangem fontes, integração, modelo e armazenamento; <strong>visualização e experiência de uso</strong>, para que a pessoa entenda e consiga explorar os resultados; <strong>segurança e ciclo de vida</strong>, que tratam de acesso, origem, manutenção, arquivamento e descarte; e <strong>estatística e prática</strong>, que dão sentido às métricas e análises. Lembre: BI não termina na coleta. É preciso transformar dados em uma resposta compreensível e usável.</p>
+    <p><strong>ETL</strong> significa extrair, transformar e carregar. Extrair é obter dados das fontes; transformar é corrigir, limpar e padronizar; carregar é colocá-los no destino analítico. O material de DW também menciona <strong>ELT</strong>: extrair, carregar e transformar. A diferença central é a ordem entre carga e transformação. Em ambos os casos, o objetivo é preparar dados consistentes para análise.</p>
+    <p>Relatórios apresentam informações organizadas; <strong>dashboards</strong>, ou painéis, permitem acompanhar medidas importantes, muitas vezes com filtros; análise <strong>ad hoc</strong> é uma consulta feita para uma pergunta pontual; análise preditiva estima um resultado futuro com base em dados e modelos. <strong>KPI</strong> é um indicador-chave de desempenho vinculado a um objetivo. “Número de vendas” é uma medida. Pode ser KPI se a empresa o escolher para acompanhar uma meta, com definição clara e período de comparação.</p>
+    <h3>BI, inteligência competitiva e gestão do conhecimento</h3>
+    <p><strong>Inteligência competitiva</strong> acompanha o ambiente de mercado de modo sistemático e ético: concorrentes, clientes, tendências, oportunidades e ameaças. Seu ciclo, conforme o PDF, identifica quem decide, levanta necessidades de informação, coleta dados, transforma informação em inteligência e dissemina o resultado. O BI pode fornecer ferramentas e análises para esse ciclo. <strong>Gestão do conhecimento</strong> procura criar, compartilhar e usar o conhecimento na organização. Portanto, os três conceitos se relacionam, mas têm focos diferentes: análise de dados para decisão, entendimento do ambiente competitivo e circulação do conhecimento organizacional.</p>
+    <h3>ERP, CRM e BPM: não confundir</h3>
+    <p><strong>ERP</strong>, sistema de gestão empresarial, integra processos e registros internos, como compras, vendas, estoque, finanças e contabilidade. <strong>CRM</strong>, gestão do relacionamento com clientes, registra interações, oportunidades, marketing, vendas e atendimento durante o relacionamento com o cliente. Ambos podem ser fontes de dados para o BI. <strong>BPM</strong>, gestão de processos de negócio, é a prática de mapear, acompanhar e melhorar fluxos de trabalho; ajuda a localizar gargalos. O BI pode medir se a melhoria de um processo realmente funcionou. Um software pode apoiar BPM, mas a prática não se reduz à compra de um programa.</p>
+  </section>
+
+  <section aria-labelledby="dw">
+    <h2 id="dw">3. Data Warehouse: a base para analisar o histórico</h2>
+    <p>Um sistema operacional registra transações do dia a dia: uma venda, um pagamento, uma alteração de estoque. O DW foi pensado para consultar dados integrados de várias fontes e comparar períodos, regiões e produtos. Na definição clássica citada no PDF, seus dados são <strong>orientados por assunto</strong>, <strong>integrados</strong>, <strong>variáveis no tempo</strong> e <strong>não voláteis</strong>. “Orientados por assunto” significa organizar por temas como vendas ou clientes. “Integrados” significa unificar códigos e nomes diferentes. “Variáveis no tempo” significa guardar o histórico. “Não voláteis” significa que os registros históricos são preservados para análise, em vez de serem continuamente substituídos como ocorre em muitas operações.</p>
+    <p>Exemplo: uma filial registra “SP” e outra “São Paulo”. Antes de comparar vendas por estado, o processo de integração precisa padronizar essas representações. Sem isso, o relatório mostrará categorias separadas para o mesmo lugar.</p>
+    <p><strong>Data Mart</strong> é uma porção de dados voltada a uma área ou assunto, como vendas. Pode ser <strong>dependente</strong>, quando deriva de um DW corporativo, ou <strong>independente</strong>, quando é criado diretamente a partir de outras fontes. <strong>Enterprise Data Warehouse</strong>, ou EDW, integra dados em escala de toda a organização. <strong>Operational Data Store</strong>, ou ODS, reúne dados operacionais recentes e integrados para necessidades de curto prazo; pode servir como etapa intermediária para o DW. A diferença mais importante: ODS privilegia informações recentes; DW privilegia análise histórica; Data Mart tem escopo específico.</p>
+    <p><strong>Metadados</strong> são dados que descrevem outros dados. Eles informam o significado de um campo, tipo, origem, regras de transformação, periodicidade e uso. Por exemplo: “receita_liquida” é valor monetário, calculado como vendas menos devoluções e descontos, atualizado diariamente. Metadados técnicos ajudam a administrar a estrutura; metadados de negócio ajudam as pessoas a interpretar as medidas corretamente.</p>
+    <h3>Como o DW funciona</h3>
+    <p>O fluxo geral é: sistemas internos e fontes externas fornecem dados; processos de <strong>back-end</strong> extraem, limpam, transformam, carregam e atualizam; o DW ou os Data Marts armazenam dados preparados; ferramentas de <strong>front-end</strong> permitem consultas, análise OLAP, relatórios e painéis. Back-end é o trabalho de bastidores. Front-end é a interface usada pela pessoa. O PDF também descreve arquiteturas em duas ou três camadas: separar serviços pode facilitar escala e desempenho, mas a arquitetura adequada depende do contexto e dos custos.</p>
+    <p><strong>OLAP</strong> é a análise multidimensional. Permite olhar uma medida por diferentes perspectivas, como receita por mês, por loja e por categoria. É comum subir de detalhe, por exemplo de dia para mês, ou descer de mês para dia. Isso depende de o detalhe original existir na base.</p>
+    <h3>Modelagem dimensional em quatro passos</h3>
+    <p><strong>Primeiro, definir fatos ou métricas.</strong> São os valores ou eventos que queremos medir, como quantidade vendida, receita e custo. Uma tabela de fatos guarda essas medidas e referências ao contexto. <strong>Segundo, determinar dimensões.</strong> São as perspectivas de análise, como tempo, produto, loja e cliente. Uma dimensão descreve “quem, quando, onde ou o quê”. <strong>Terceiro, definir granularidade.</strong> É o nível de detalhe de cada registro. Uma linha por item vendido em cada venda é mais detalhada que uma linha por produto e mês. É preciso escolher o nível que responderá às perguntas de negócio. <strong>Quarto, estabelecer hierarquias.</strong> São caminhos de agrupamento, como dia, mês, trimestre, ano; ou produto, categoria, departamento. Essa sequência corresponde ao roteiro do PDF de DW, páginas 48 a 55.</p>
+    <div class="box example"><p><strong>Exemplo de modelagem.</strong> Pergunta: “Qual foi a receita de cada categoria por mês e por estado?” Fato: receita da venda. Dimensões: produto, tempo e loja. Granularidade: cada item de venda. Hierarquias: produto para categoria; dia para mês; loja para estado. Com registros nesse nível, pode-se somar por categoria, mês e estado. Se a base guardar somente totais mensais, não será possível recuperar o dia exato sem voltar à fonte original.</p></div>
+    <p>Na implantação do DW, começa-se pelas perguntas dos usuários e pelas fontes disponíveis. Decide-se escopo, modelo e qualidade; constroem-se integrações; validam-se medidas com as áreas de negócio; entrega-se o acesso; e ajusta-se a solução. O PDF compara a abordagem <strong>Inmon</strong>, de cima para baixo, que parte de uma visão corporativa ampla, com a abordagem <strong>Kimball</strong>, de baixo para cima, que pode começar por Data Marts orientados a processos e crescer de forma integrada. Não existe uma abordagem única para toda empresa.</p>
+  </section>
+
+  <section aria-labelledby="mining">
+    <h2 id="mining">4. Data Mining: descobrir padrões úteis</h2>
+    <p><strong>Data Mining</strong> combina estatística, bancos de dados e técnicas computacionais para encontrar padrões, relações, grupos, exceções e previsões em conjuntos de dados. É uma <strong>etapa</strong> da descoberta de conhecimento em bases de dados, chamada DCBD ou KDD. O processo completo envolve entender o problema, selecionar e preparar dados, minerar, avaliar e usar o conhecimento. A mineração não é sinônimo do processo inteiro. Um padrão interessante deve ser válido, novo ou não óbvio, útil e compreensível para quem decide.</p>
+    <h3>Principais tarefas: o que a pergunta pede?</h3>
+    <p><strong>Classificação</strong> atribui uma categoria já conhecida a um novo caso. Exemplo: prever se um cliente vai cancelar ou permanecer. Usa exemplos históricos rotulados; por isso é aprendizado <strong>supervisionado</strong>. Árvores de decisão, regressão logística e redes neurais são técnicas possíveis. <strong>Regressão</strong> prevê um valor numérico, como faturamento ou demanda. Embora a palavra “regressão” possa aparecer em técnicas de classificação, a distinção prática para a prova é: categoria na classificação; quantidade na regressão.</p>
+    <p><strong>Agrupamento</strong>, também chamado clustering, forma grupos semelhantes sem categorias prontas. Exemplo: separar clientes em perfis de compra antes de nomear os segmentos. É aprendizado <strong>não supervisionado</strong>. Dentro de um grupo, busca-se alta semelhança; entre grupos, busca-se diferença. <strong>Associação</strong> identifica itens ou eventos que costumam ocorrer juntos, como produtos comprados na mesma cesta. Uma regra “X implica Y” indica associação observada, não prova causa e efeito. <strong>Detecção de outliers</strong> procura casos muito diferentes dos demais, como transações incomuns; eles podem ser erros, mas também podem revelar fraude ou oportunidade. <strong>Séries temporais</strong> estudam a evolução ao longo do tempo, como tendência e sazonalidade de vendas. <strong>Sumarização</strong> reduz e apresenta o conjunto de dados para facilitar entendimento.</p>
+    <div class="box example"><p><strong>Quatro perguntas para memorizar.</strong> “Este cliente vai sair?” é classificação. “Quanto venderemos?” é regressão ou previsão numérica. “Que tipos de clientes existem?” é agrupamento. “Quais produtos são comprados juntos?” é associação.</p></div>
+    <p>Uma <strong>árvore de decisão</strong> organiza perguntas do tipo “se... então...” até chegar a uma previsão. Uma <strong>rede neural</strong> aprende relações a partir de exemplos e pode captar padrões complexos. Nenhuma técnica é melhor para todos os problemas. O resultado depende da pergunta, do volume e da qualidade dos dados, das variáveis disponíveis e de como o modelo é avaliado.</p>
+    <h3>O processo CRISP-DM em seis etapas</h3>
+    <p>O PDF de Data Mining, páginas 59 a 64, apresenta o <strong>CRISP-DM</strong>, uma metodologia iterativa. <strong>Um: compreender o negócio.</strong> Definir a decisão e o objetivo, por exemplo reduzir abandono. <strong>Dois: compreender os dados.</strong> Localizar fontes, explorar variáveis e descobrir problemas. <strong>Três: preparar os dados.</strong> Selecionar, integrar, limpar e transformar registros. <strong>Quatro: construir modelos.</strong> Aplicar e comparar técnicas. <strong>Cinco: avaliar.</strong> Verificar se os resultados são confiáveis e úteis para o negócio, além de medir desempenho técnico. <strong>Seis: implementar.</strong> Apresentar ou colocar o resultado em uso e acompanhar seus efeitos. Pode-se voltar a etapas anteriores quando um resultado exigir revisão.</p>
+    <p>Exemplo: um modelo pode acertar muitos casos por repetir a classe mais frequente, mas ser inútil para identificar os poucos clientes que realmente saem. Por isso, avaliar só o número de acertos não basta; é preciso verificar se a saída atende à decisão de negócio. Também é necessário examinar erros, dados ausentes, dados duplicados e mudanças no comportamento ao longo do tempo.</p>
+    <p>No ambiente corporativo, a mineração pode apoiar segmentação de clientes, recomendação, detecção de fraude, previsão de demanda, gestão de estoques, manutenção e análise de processos. Na chamada Indústria 4.0, sensores e sistemas conectados ampliam a quantidade e a velocidade de dados, mas exigem preparação e interpretação cuidadosas. Ferramentas automatizam etapas; pessoas ainda definem objetivos e julgam se um padrão faz sentido.</p>
+  </section>
+
+  <section aria-labelledby="implantacao">
+    <h2 id="implantacao">5. Implantação de BI: transformar tecnologia em resultado</h2>
+    <p>Um projeto de BI começa por uma <strong>necessidade de negócio</strong>. Deve responder: qual decisão melhorar, quem precisa da resposta, quais dados existem, como medir sucesso e quem será responsável? A unidade 4 insiste no alinhamento entre gestores, usuários e tecnologia da informação. Comprar uma ferramenta antes de definir problema, fontes e indicadores não resolve a necessidade.</p>
+    <p>O material apresenta etapas como identificação de requisitos, distribuição de responsabilidades, verificação e limpeza de dados, avaliação de fornecedores, recursos e custos, testes da solução, escolha de software, treinamento, implantação, integração e refinamento de metas. Outro esquema do mesmo PDF resume o trabalho em definir e quantificar requisitos, avaliar a capacidade de coleta, coletar dados, analisar qualidade, extrair informação e analisar dados. Leia os dois como descrições complementares de um processo que precisa ser acompanhado e melhorado.</p>
+    <p>Uma sequência prática é: <strong>1.</strong> definir pergunta, público e meta; <strong>2.</strong> inventariar fontes internas e externas; <strong>3.</strong> verificar autorização, acesso e qualidade; <strong>4.</strong> integrar e limpar dados; <strong>5.</strong> construir o modelo e selecionar a ferramenta; <strong>6.</strong> testar com usuários e validar indicadores; <strong>7.</strong> treinar e implantar; <strong>8.</strong> medir uso e resultado; <strong>9.</strong> corrigir e evoluir. Uma prova de conceito, ou <strong>PoC</strong>, é um teste limitado que ajuda a verificar se uma solução atende ao objetivo antes de ampliá-la.</p>
+    <h3>Fontes e qualidade dos dados</h3>
+    <p>Fontes <strong>internas</strong> incluem ERP, CRM, estoque, planilhas, finanças e registros de atendimento. Fontes <strong>externas</strong> podem incluir pesquisas, dados de mercado e informações públicas ou de parceiros. Os dados podem vir em formatos estruturados, como tabelas, ou menos estruturados, como textos. É preciso escolher apenas o que ajuda a responder à pergunta.</p>
+    <p>Segundo a unidade 4, avaliar dados envolve perguntar: a <strong>fonte é confiável</strong>? O conteúdo é <strong>preciso</strong>? É possível <strong>acessar</strong> os dados quando necessário? O uso respeita <strong>segurança e privacidade</strong>? Os campos são <strong>completos</strong> para a análise? Fontes diferentes são <strong>consistentes</strong> entre si? Os dados estão <strong>atuais</strong>? A <strong>granularidade</strong> é suficiente? Os valores são <strong>válidos</strong> conforme regras definidas? As variáveis são <strong>relevantes</strong> para o problema? Limpeza de dados significa localizar e tratar erros, duplicatas, ausências e incompatibilidades. A regra para lembrar é: a qualidade da decisão depende da qualidade da entrada.</p>
+    <h3>Indicadores e escolha de ferramenta</h3>
+    <p><strong>Eficiência</strong> relaciona resultados aos recursos usados: fazer bom uso de tempo e custo. <strong>Eficácia</strong> indica se a meta pretendida foi atingida. <strong>Produtividade</strong> relaciona saídas produzidas aos recursos empregados. <strong>Capacidade</strong> relaciona produção ao tempo. <strong>Qualidade</strong> observa a parcela sem defeitos ou não conformidades. Outros indicadores podem medir lucratividade e desempenho financeiro. A definição exata deve combinar fórmula, unidade, fonte, responsável, frequência e meta.</p>
+    <div class="box example"><p><strong>Exemplo simples.</strong> A meta era atender 100 solicitações, e a equipe atendeu 100: houve eficácia quanto à meta. Se gastou muito mais horas do que o previsto, pode ter sido pouco eficiente. Se passou a atender mais solicitações com as mesmas horas, a produtividade aumentou.</p></div>
+    <p>Ao selecionar uma ferramenta de BI, avalie integração com as fontes, qualidade de consultas e relatórios, dashboards, segurança, facilidade de uso, desempenho, custo, suporte, capacidade de crescimento e aderência às necessidades reais. O PDF cita exemplos como Power BI, Tableau, Qlik Sense, SAP BI, MicroStrategy, Domo e outros. Para a prova, é mais importante compreender os <strong>critérios de seleção</strong> e as funcionalidades do que decorar a lista de marcas. Relatórios, análise ad hoc, painéis, visualização, indicadores, acesso móvel e recursos de autoatendimento são funcionalidades possíveis.</p>
+    <p><strong>Retroação</strong> é o retorno das informações sobre o uso da solução: conversar com usuários, observar dificuldades, corrigir indicadores e melhorar continuamente. O BI é um sistema vivo; novas fontes, objetivos e processos pedem ajustes. Um projeto bem implantado não termina com a primeira entrega do painel.</p>
+  </section>
+
+  <section aria-labelledby="revisao">
+    <h2 id="revisao">6. Revisão rápida para ouvir antes da prova</h2>
+    <p>BI transforma dados em informações úteis para decisões. ERP integra operações internas; CRM organiza relações com clientes; BPM melhora processos. ETL extrai, transforma e carrega dados. O DW integra dados históricos para análise, e seus atributos clássicos são orientação por assunto, integração, variação no tempo e não volatilidade. Data Mart é recorte por assunto ou área; ODS trabalha com dados operacionais recentes; metadados descrevem os dados. Na modelagem dimensional, fatos são medidas; dimensões são perspectivas; granularidade é o nível de detalhe; hierarquia permite agrupar. Data Mining procura padrões e é uma etapa da descoberta de conhecimento. Classificação prevê categoria; regressão prevê número; agrupamento encontra grupos sem rótulos; associação encontra ocorrências conjuntas; outliers são exceções. CRISP-DM passa por negócio, dados, preparação, modelagem, avaliação e implantação. Um projeto de BI precisa de objetivo, pessoas, fontes confiáveis, indicadores, ferramenta adequada, treinamento e melhoria contínua.</p>
+  </section>
+
+  <section aria-labelledby="questoes">
+    <h2 id="questoes">7. Questões comentadas para fixar</h2>
+    <h3>Questão 1. O que muda de um sistema operacional para um Data Warehouse?</h3>
+    <p><strong>Resposta.</strong> O sistema operacional registra e atualiza transações do cotidiano. O DW integra dados de várias fontes, conserva histórico e favorece consultas analíticas e decisões. Uma venda nova é transação; comparar anos de vendas por região é análise.</p>
+    <h3>Questão 2. Qual a diferença entre Data Mart, ODS e EDW?</h3>
+    <p><strong>Resposta.</strong> Data Mart é um recorte para uma área ou assunto. ODS integra dados operacionais recentes e apoia necessidades de curto prazo. EDW tem alcance corporativo, reunindo dados de muitas áreas em escala ampla.</p>
+    <h3>Questão 3. Uma empresa quer prever se cada cliente cancelará o serviço. Qual tarefa de mineração usar?</h3>
+    <p><strong>Resposta.</strong> Classificação, pois a saída é uma categoria, como “cancela” ou “não cancela”. Se quisesse prever o valor de gasto, seria uma previsão numérica, como regressão.</p>
+    <h3>Questão 4. Os grupos de clientes já precisam existir antes do agrupamento?</h3>
+    <p><strong>Resposta.</strong> Não. O agrupamento encontra grupos a partir das semelhanças entre registros. Na classificação, as categorias já são conhecidas nos exemplos de treinamento.</p>
+    <h3>Questão 5. Uma regra diz que quem compra X costuma comprar Y. O que se pode concluir?</h3>
+    <p><strong>Resposta.</strong> Há uma associação nos dados observados. A regra não demonstra, por si só, que comprar X causa a compra de Y.</p>
+    <h3>Questão 6. O que são fatos, dimensões e granularidade?</h3>
+    <p><strong>Resposta.</strong> Fatos são medidas ou eventos, como receita e quantidade. Dimensões dão contexto, como produto e mês. Granularidade é o detalhe de cada registro, como item de cada venda ou total por mês.</p>
+    <h3>Questão 7. O projeto atingiu a meta, mas usou recursos demais. Foi eficaz e eficiente?</h3>
+    <p><strong>Resposta.</strong> Foi eficaz quanto à meta. A eficiência foi baixa, pois a relação entre resultado e recursos usados foi desfavorável.</p>
+    <h3>Questão 8. Por que a limpeza de dados vem antes da confiança em um painel?</h3>
+    <p><strong>Resposta.</strong> Erros, duplicações, lacunas e códigos incompatíveis distorcem medidas. O painel pode estar tecnicamente correto e ainda mostrar uma conclusão errada se a entrada for ruim.</p>
+    <h3>Questão 9. Qual é a ordem das fases do CRISP-DM?</h3>
+    <p><strong>Resposta.</strong> Compreensão do negócio, compreensão dos dados, preparação dos dados, modelagem, avaliação e implementação. O processo pode voltar a fases anteriores.</p>
+    <h3>Questão 10. Por que treinar usuários e ouvir seu retorno depois de implantar BI?</h3>
+    <p><strong>Resposta.</strong> O resultado só gera valor se as pessoas entenderem e usarem a informação. O retorno revela problemas e orienta a melhoria contínua, chamada de retroação no material.</p>
+  </section>
+
+  <footer>
+    <h2>Como estudar com este arquivo</h2>
+    <p>Faça uma primeira escuta contínua. Na segunda, pause após cada seção e tente explicar em voz alta o exemplo da rede de lojas. Na terceira, responda às dez questões antes de ouvir cada resposta. Se o tempo for curto, priorize a seção 6 e depois as questões. Volte à seção que não conseguir explicar com suas palavras.</p>
+    <p class="source">Este resumo foi elaborado a partir dos quatro PDFs fornecidos. As explicações e os exemplos foram simplificados para estudo; listas de fornecedores e casos extensos dos materiais foram condensados.</p>
+  </footer>
+</main>
+</body>
+</html>

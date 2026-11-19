@@ -1,0 +1,1157 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Guia de estudo acessível sobre lavagem de dinheiro, corrupção, cooperação jurídica e recuperação de ativos.">
+  <title>Guia de estudo — Integridade, justiça e ativos</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f1e7;
+      --paper-2: #fffdf7;
+      --ink: #1d302d;
+      --muted: #526661;
+      --line: #d7d2c4;
+      --green: #214e42;
+      --green-2: #dce8df;
+      --orange: #a74d29;
+      --orange-2: #f2dfd2;
+      --shadow: 0 16px 42px rgba(37, 51, 44, .09);
+      --body-size: 1.08rem;
+      --line-height: 1.78;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 2% 2%, rgba(196, 209, 191, .45), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font: var(--body-size)/var(--line-height) ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: var(--green); text-decoration-thickness: .09em; text-underline-offset: .18em; }
+    a:hover { color: var(--orange); }
+    a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--orange);
+      outline-offset: 3px;
+    }
+    button, input, select { font: inherit; }
+    ::highlight(speech-current) { background: #ffe391; color: #1d302d; }
+    .speech-current { outline: 3px solid #d8892e; outline-offset: 3px; }
+    .speech-option { display: inline-flex; align-items: center; gap: .3rem; color: var(--muted); font-size: .85rem; font-weight: 700; }
+    .speech-option select { max-width: 12rem; padding: .35rem; border: 1px solid var(--line); border-radius: .5rem; background: var(--paper-2); color: var(--ink); }
+    .speech-controls { position: fixed; right: 1rem; bottom: 1rem; z-index: 30; display: flex; gap: .5rem; padding: .6rem; border: 1px solid var(--line); border-radius: .8rem; background: var(--paper-2); box-shadow: var(--shadow); }
+    .speech-controls[hidden] { display: none; }
+    button { cursor: pointer; }
+    .skip-link {
+      position: absolute; left: 1rem; top: -5rem; z-index: 20;
+      background: var(--ink); color: white; padding: .65rem 1rem;
+    }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
+    .masthead {
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      color: var(--muted); font-size: .88rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .masthead strong { color: var(--green); }
+    .hero {
+      position: relative; overflow: hidden;
+      margin: 1.5rem 0 1.3rem; padding: clamp(1.5rem, 5vw, 4.5rem);
+      background: var(--green); color: #fbf7ed;
+      border-radius: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .hero::after {
+      content: "01—06"; position: absolute; right: -1rem; bottom: -3.2rem;
+      font: 900 clamp(6rem, 17vw, 15rem)/1 Georgia, "Times New Roman", serif;
+      color: rgba(255,255,255,.055); letter-spacing: -.08em; pointer-events: none;
+    }
+    .eyebrow { margin: 0 0 .7rem; color: #e6b092; font-size: .86rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h1, h2, h3, h4 { line-height: 1.17; }
+    h1 { max-width: 13ch; margin: 0; font: 700 clamp(2.4rem, 7vw, 5.3rem)/.99 Georgia, "Times New Roman", serif; letter-spacing: -.045em; }
+    .hero-intro { max-width: 60ch; margin: 1.2rem 0 0; color: #e4eee6; font-size: 1.12rem; }
+    .hero-note { display: inline-flex; gap: .55rem; align-items: center; margin-top: 1.45rem; color: #fff; font-size: .9rem; }
+    .hero-note::before { content: "✳"; color: #e6b092; font-size: 1.2rem; }
+
+    .toolbar {
+      position: sticky; top: 0; z-index: 10;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .7rem;
+      padding: .65rem 0; background: rgba(245,241,231,.94); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .toolbar-group { display: flex; align-items: center; flex-wrap: wrap; gap: .4rem; }
+    .tool-button, .size-button {
+      border: 1px solid var(--line); border-radius: 999px; padding: .4rem .8rem;
+      background: var(--paper-2); color: var(--ink); font-size: .9rem; font-weight: 700;
+    }
+    .tool-button:hover, .size-button:hover { border-color: var(--green); background: var(--green-2); }
+    .progress { color: var(--muted); font-size: .88rem; font-weight: 750; }
+    .progress-track { width: 7rem; height: .45rem; background: var(--line); border-radius: 999px; overflow: hidden; }
+    .progress-fill { width: 0; height: 100%; background: var(--orange); transition: width .25s ease; }
+    .layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 2rem; align-items: start; padding: 1.7rem 0 4rem; }
+    .toc {
+      position: sticky; top: 5.3rem; padding: 1.1rem;
+      background: rgba(255,253,247,.7); border: 1px solid var(--line); border-radius: .9rem;
+    }
+    .toc h2 { margin: 0 0 .7rem; font: 700 1.12rem Georgia, "Times New Roman", serif; }
+    .toc ul { margin: 0; padding: 0; list-style: none; }
+    .toc li + li { margin-top: .35rem; }
+    .toc a { display: block; padding: .25rem .4rem; border-radius: .3rem; color: var(--muted); font-size: .92rem; text-decoration: none; }
+    .toc a:hover { color: var(--green); background: var(--green-2); }
+    main { min-width: 0; }
+    .intro-card, .module, .study-card, .glossary-card, .quiz-card {
+      background: var(--paper-2); border: 1px solid var(--line); border-radius: .9rem; box-shadow: 0 4px 18px rgba(37,51,44,.035);
+    }
+    .intro-card { padding: clamp(1.1rem, 3vw, 1.8rem); margin-bottom: 1.5rem; }
+    .intro-card h2, .section-heading { margin: 0 0 .75rem; font: 700 clamp(1.65rem, 3vw, 2.3rem)/1.1 Georgia, "Times New Roman", serif; letter-spacing: -.025em; }
+    .intro-card p { margin: .55rem 0; }
+    .concept-chain {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: .55rem; margin-top: 1.2rem;
+    }
+    .chain-step {
+      min-height: 6rem; padding: .75rem; border-top: 3px solid var(--orange);
+      background: #f7f2e8; border-radius: .35rem;
+    }
+    .chain-step b { display: block; margin-bottom: .28rem; color: var(--green); font-size: .92rem; }
+    .chain-step span { color: var(--muted); font-size: .84rem; line-height: 1.45; }
+    .callout {
+      margin: 1rem 0; padding: .85rem 1rem; border-left: 4px solid var(--orange);
+      background: var(--orange-2); border-radius: 0 .5rem .5rem 0;
+    }
+    .callout p { margin: 0; }
+    .callout strong { color: #703419; }
+    .module { margin: 1.15rem 0; overflow: clip; }
+    .module-head { padding: 1.1rem 1.35rem; background: var(--green-2); }
+    .module-kicker { color: var(--orange); font-size: .79rem; letter-spacing: .12em; font-weight: 850; text-transform: uppercase; }
+    .module h3 { margin: .15rem 0 0; font: 700 clamp(1.35rem, 3vw, 1.9rem)/1.2 Georgia, "Times New Roman", serif; }
+    .module-summary { margin: .45rem 0 0; color: var(--muted); }
+    .module-content { padding: .2rem clamp(.8rem, 2.5vw, 1.35rem) 1.25rem; }
+    .study-card { margin: .85rem 0; overflow: hidden; }
+    .study-heading, .quiz-heading {
+    margin: 0; padding: 1rem; color: var(--ink); font-size: 1.04rem; line-height: 1.35;
+    font-weight: 800; border-bottom: 1px solid var(--line);
+    }
+    .card-label { display: block; color: var(--orange); font-size: .78rem; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
+    .card-title { display: block; margin-top: .1rem; }
+    .card-content { padding: 0 1rem 1rem 3.35rem; }
+    .card-content p { margin: .5rem 0; }
+    .card-content ul { margin: .4rem 0 .8rem; padding-left: 1.2rem; }
+    .card-content li { padding-left: .15rem; margin: .28rem 0; }
+    .remember { padding: .7rem .85rem; background: #edf2e8; border-radius: .4rem; color: #29483d; }
+    .practice-example {
+      margin: .9rem 0; padding: .8rem 1rem;
+      border: 1px solid var(--line); border-left: 4px solid var(--green);
+      border-radius: .45rem; background: #f7f4ec;
+    }
+    .practice-example h4, .module-checkpoint h4 {
+      margin: 0 0 .35rem; color: var(--green); font-size: 1rem;
+    }
+    .practice-example p { margin: .35rem 0; }
+    .module-checkpoint {
+      margin: 1rem 0 .3rem; padding: .9rem 1rem;
+      border: 1px solid var(--line); border-radius: .55rem;
+      background: #f7f4ec;
+    }
+    .module-checkpoint ul { margin: .35rem 0 0; padding-left: 1.2rem; }
+    .module-checkpoint li { margin: .25rem 0; }
+    .source-row { display: flex; justify-content: space-between; gap: .8rem; align-items: center; flex-wrap: wrap; margin-top: .8rem; padding-top: .65rem; border-top: 1px dashed var(--line); font-size: .88rem; }
+    .source-row a { font-weight: 750; }
+    .done-label { display: inline-flex; align-items: center; gap: .42rem; color: var(--muted); font-size: .83rem; font-weight: 650; }
+    .done-label input { width: 1.08rem; height: 1.08rem; accent-color: var(--green); }
+    .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .mini-panel { padding: 1rem; background: #f7f2e8; border-radius: .6rem; }
+    .mini-panel h4 { margin: 0 0 .4rem; color: var(--green); font-size: 1rem; }
+    .mini-panel p { margin: .25rem 0; }
+    .steps { counter-reset: step; list-style: none; padding: 0 !important; }
+    .steps li { counter-increment: step; position: relative; padding-left: 2.4rem !important; margin: .65rem 0 !important; }
+    .steps li::before {
+      content: counter(step); position: absolute; left: 0; top: .05rem; width: 1.7rem; height: 1.7rem;
+      display: grid; place-items: center; border-radius: 50%; background: var(--green); color: white; font-size: .84rem; font-weight: 800;
+    }
+    .section { margin-top: 2.2rem; scroll-margin-top: 5.8rem; }
+    .section-lede { max-width: 65ch; color: var(--muted); margin: -.25rem 0 1rem; }
+    .glossary { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+    .glossary-card { padding: .85rem 1rem; }
+    .glossary-card dt { color: var(--green); font-weight: 850; }
+    .glossary-card dd { margin: .2rem 0 0; color: var(--muted); }
+    .quiz-card { margin: .65rem 0; }
+    .answer { padding: .8rem 1rem 1rem; }
+    .answer p { margin: 0; }
+    .study-plan { padding: 1.1rem 1.3rem; background: var(--green); color: #f8f6ec; border-radius: .9rem; }
+    .study-plan h3 { margin: 0 0 .4rem; font: 700 1.5rem Georgia, "Times New Roman", serif; }
+    .study-plan ol { margin: .4rem 0 0; padding-left: 1.25rem; }
+    .study-plan li { padding-left: .2rem; margin: .3rem 0; }
+    .footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+    .footer p { max-width: 75ch; }
+    .dyslexia { font-family: Verdana, Geneva, sans-serif; letter-spacing: .025em; word-spacing: .09em; --line-height: 1.95; }
+    .dark {
+      color-scheme: dark;
+      --paper: #17231f; --paper-2: #202e28; --ink: #f4f0e5; --muted: #c1ccc4; --line: #46564e;
+      --green: #a9d0b6; --green-2: #2b4035; --orange: #f0a27a; --orange-2: #47362e;
+      --shadow: 0 16px 42px rgba(0,0,0,.24);
+    }
+    .dark body { background: radial-gradient(ellipse at 2% 2%, rgba(86,121,96,.2), transparent 34rem), var(--paper); }
+    .dark .toolbar { background: rgba(23,35,31,.94); }
+    .dark .tool-button, .dark .size-button { background: var(--paper-2); color: var(--ink); }
+    .dark .chain-step, .dark .mini-panel { background: #26352e; }
+    .dark .remember { background: #293d32; color: #e1f1e5; }
+    .dark .practice-example, .dark .module-checkpoint { background: #26352e; }
+    .dark .callout strong { color: #ffc19c; }
+
+    @media (max-width: 780px) {
+      .layout { grid-template-columns: 1fr; gap: 1rem; }
+      .toc { position: static; }
+      .toc ul { display: grid; grid-template-columns: 1fr 1fr; gap: .1rem .5rem; }
+      .concept-chain { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 520px) {
+      .shell { width: min(100% - 1rem, 1120px); }
+      .masthead { font-size: .72rem; }
+      .toolbar { position: static; }
+      .toolbar-group:last-child { width: 100%; justify-content: space-between; }
+      .toc ul, .glossary, .two-column { grid-template-columns: 1fr; }
+      .card-content, .answer { padding-left: 1rem; }
+      .hero { border-radius: .75rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+    @media print {
+      body { background: white; color: black; font-size: 11pt; }
+      .toolbar, .toc, .done-label, .skip-link, .speech-controls { display: none !important; }
+      .layout { display: block; padding: 0; }
+      .shell { width: 100%; }
+      .hero, .study-plan { background: white; color: black; border: 1px solid #777; box-shadow: none; }
+      .hero-intro, .hero-note, .study-plan { color: black; }
+      .module, .intro-card, .study-card, .glossary-card, .quiz-card { box-shadow: none; break-inside: avoid; }
+      a { color: black; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="shell">
+    <header class="masthead">
+      <strong>Guia de estudo</strong>
+      <span>18 unidades · leitura em etapas</span>
+    </header>
+
+    <section class="hero" aria-labelledby="titulo">
+      <p class="eyebrow">Lavagem de dinheiro · corrupção · justiça</p>
+      <h1 id="titulo">Entender o caminho do dinheiro</h1>
+      <p class="hero-intro">Um resumo acessível dos materiais da pasta, feito para estudar sem pressa. O conteúdo fica todo visível e segue em uma única página, para acompanhar a leitura ou a narração sem abrir blocos.</p>
+      <span class="hero-note">Você pode aumentar as letras, mudar o contraste e marcar o que já estudou.</span>
+    </section>
+
+    <div class="toolbar" aria-label="Opções de leitura">
+      <div class="toolbar-group">
+        <button class="tool-button" id="readMode" type="button" aria-pressed="false">Leitura confortável</button>
+        <button class="tool-button" id="themeMode" type="button" aria-pressed="false">Modo escuro</button>
+        <button class="tool-button" id="speakText" type="button" aria-pressed="false" title="Ler o texto selecionado ou o conteúdo visível do guia"><span aria-hidden="true">🔊</span> Ouvir texto</button>
+        <label class="speech-option">Voz <select id="speechVoice"><option value="">Voz padrão</option></select></label>
+        <label class="speech-option">Velocidade <select id="speechRate"><option value="0.75">0,75×</option><option value="1" selected>1×</option><option value="1.25">1,25×</option><option value="1.5">1,5×</option><option value="2">2×</option></select></label>
+        <button class="size-button" id="smaller" type="button" aria-label="Diminuir tamanho do texto">A−</button>
+        <button class="size-button" id="larger" type="button" aria-label="Aumentar tamanho do texto">A+</button>
+      </div>
+      <div class="toolbar-group" aria-live="polite">
+        <span class="progress" id="progressText">0 de 18 unidades estudadas</span>
+        <span class="progress-track" role="progressbar" aria-label="Progresso de estudo" aria-valuemin="0" aria-valuemax="18" aria-valuenow="0"><span class="progress-fill" id="progressFill"></span></span>
+      </div>
+    </div>
+
+    <div class="layout">
+      <nav class="toc" aria-label="Navegação do guia">
+        <h2>Ir para</h2>
+        <ul>
+          <li><a href="#visao-geral">Visão geral</a></li>
+          <li><a href="#modulo-1">1 · Lavagem</a></li>
+          <li><a href="#modulo-2">2 · Corrupção</a></li>
+          <li><a href="#modulo-3">3 · Cooperação</a></li>
+          <li><a href="#modulo-4">4 · Inteligência financeira</a></li>
+          <li><a href="#modulo-5">5 · Suborno transnacional</a></li>
+          <li><a href="#modulo-6">6 · Recuperação de ativos</a></li>
+          <li><a href="#glossario">Glossário</a></li>
+          <li><a href="#revisao">Revisão rápida</a></li>
+        </ul>
+      </nav>
+
+      <main id="conteudo">
+        <section class="intro-card" id="visao-geral">
+          <h2>O mapa em uma frase</h2>
+          <p>O curso mostra como prevenir e investigar crimes que geram dinheiro ou bens ilícitos, como pedir ajuda a outros países e como recuperar os valores para reparar danos e enfraquecer redes criminosas. Os seis módulos se conectam: a lavagem tenta dar aparência legítima a ganhos ilícitos; a corrupção pode ser uma das infrações que geram esses ganhos; controles e inteligência financeira ajudam a perceber sinais; e a cooperação e a recuperação de ativos permitem agir mesmo quando as informações ou os bens estão em outra jurisdição.</p>
+          <div class="callout">
+            <p><strong>Como aproveitar os exemplos:</strong> os casos abaixo são fictícios e simplificados. Leia a situação, faça uma pausa para pensar e depois compare sua resposta com a explicação. Um exemplo ajuda a compreender um conceito, mas não permite concluir automaticamente que alguém cometeu uma infração.</p>
+          </div>
+          <div class="concept-chain" aria-label="Etapas do tema">
+            <div class="chain-step"><b>1. O ilícito</b><span>Um crime ou outra infração gera dinheiro, bens ou vantagens.</span></div>
+            <div class="chain-step"><b>2. A ocultação</b><span>Operações tentam esconder a origem ou quem controla os valores.</span></div>
+            <div class="chain-step"><b>3. Os sinais</b><span>Controles e inteligência financeira ajudam a apontar situações atípicas.</span></div>
+            <div class="chain-step"><b>4. A resposta</b><span>Investigação, cooperação e medidas legais podem levar à recuperação.</span></div>
+          </div>
+          <div class="callout"><p><strong>Ideia-chave:</strong> uma operação suspeita é um sinal para análise — não prova, sozinha, que houve crime. E o trabalho do Coaf é produzir inteligência financeira, não condenar pessoas.</p></div>
+          <p><label for="search"><strong>Encontrar um assunto:</strong></label><br><input id="search" type="search" placeholder="Ex.: Coaf, leniência, prova..." style="width:min(100%, 34rem); margin-top:.3rem; padding:.65rem .8rem; border:1px solid var(--line); border-radius:.45rem; background:var(--paper-2); color:var(--ink)" autocomplete="off"></p>
+          <p id="searchStatus" aria-live="polite" style="color:var(--muted); margin:.15rem 0 0"></p>
+        </section>
+
+        <section class="module" id="modulo-1">
+          <header class="module-head">
+            <span class="module-kicker">Módulo 1 · 5 unidades</span>
+            <h3>Lavagem de dinheiro</h3>
+            <p class="module-summary">O que é, como a lei trata o tema e como as provas e o patrimônio entram no processo.</p>
+          </header>
+          <div class="module-content">
+            <details class="study-card" id="u01">
+              <summary><span><span class="card-label">Unidade 1</span><span class="card-title">O que é lavagem de dinheiro?</span></span></summary>
+              <div class="card-content">
+                <p>É tentar esconder ou disfarçar a origem criminosa de bens, direitos ou valores para que pareçam legítimos ou possam ser usados sem chamar atenção.</p>
+                <ol class="steps">
+                  <li><strong>Colocação:</strong> o valor entra no sistema econômico formal.</li>
+                  <li><strong>Circulação ou ocultação:</strong> várias movimentações tentam afastá-lo da origem.</li>
+                  <li><strong>Integração:</strong> o valor reaparece na economia como se fosse legítimo.</li>
+                </ol>
+                <p>As três etapas são uma forma didática de entender o fenômeno. A lavagem pode ser simples ou complexa; não é necessário que todas as etapas ocorram para que uma conduta possa ser analisada como crime.</p>
+                <p>A expressão ganhou projeção pública nos Estados Unidos na década de 1970, mas o combate ao fenômeno tornou-se internacional porque dinheiro e bens podem atravessar fronteiras rapidamente. A Convenção de Viena, de 1988, foi um marco inicial; depois, instrumentos como a Convenção de Palermo e as recomendações do GAFI ampliaram a cooperação e os padrões de prevenção.</p>
+                <p>Na prática, as etapas são um mapa para organizar perguntas: de onde vieram os valores? Como foram movimentados? Quem passou a controlá-los? Uma mesma operação pode oferecer pistas sobre mais de uma etapa. O foco da investigação é demonstrar os fatos e os vínculos, e não presumir culpa somente porque uma transação parece incomum.</p>
+                <p class="remember"><strong>Para lembrar:</strong> origem ilícita + tentativa de ocultar ou dissimular = núcleo da ideia.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Uma investigação sobre fraude encontra uma compra de alto valor feita depois de várias movimentações financeiras.</p>
+                  <p><strong>Pergunta:</strong> a compra, por si só, prova lavagem?</p>
+                  <p><strong>Ideia:</strong> não. Ela pode ser uma pista; é preciso apurar a origem dos recursos, as circunstâncias e o conhecimento de cada pessoa envolvida.</p>
+                </div>
+                <div class="source-row"><a href="modulo_01_unidade_1_o_que_e_lavagem_de_dinheiro.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u01"> Já estudei</label></div>
+              </div>
+            </details>
+
+            <details class="study-card" id="u02">
+              <summary><span><span class="card-label">Unidade 2</span><span class="card-title">Lei nº 9.613/1998 e prevenção</span></span></summary>
+              <div class="card-content">
+                <p>A lei combina duas frentes: <strong>repressão</strong> (investigar e punir a lavagem) e <strong>prevenção</strong> (reduzir o uso de atividades econômicas para esconder recursos ilícitos).</p>
+                <ul>
+                  <li>Após a alteração de 2012, a infração que gerou os valores pode ser, em regra, qualquer infração penal — não existe uma lista fechada de crimes antecedentes.</li>
+                  <li>Alguns setores são considerados mais expostos a riscos. Quem atua neles pode ter deveres de conhecer clientes, guardar registros, manter controles e comunicar operações previstas nas normas.</li>
+                  <li>O Coaf é a Unidade de Inteligência Financeira do Brasil: recebe e analisa informações e pode disseminar inteligência às autoridades competentes.</li>
+                  <li>A lei também prevê medidas sobre bens, sanções administrativas e regras processuais próprias.</li>
+                </ul>
+                <p>O sistema tem quatro peças que trabalham juntas: a definição do crime; a cooperação internacional; a prevenção em setores econômicos expostos; e a coordenação estatal, incluindo a Unidade de Inteligência Financeira. A prevenção complementa a investigação: empresas e profissionais de setores obrigados podem perceber padrões nas operações que não seriam visíveis a um órgão isolado.</p>
+                <p>Entre os deveres preventivos estão identificar e atualizar dados de clientes e beneficiários, conservar registros por prazo legal, adotar políticas e controles internos e comunicar determinadas situações ao Coaf sem alertar o cliente. Bancos, seguradoras, mercados de valores, negócios imobiliários, comércio de bens de alto valor e outros segmentos aparecem no rol legal; a lista e as regras específicas devem ser conferidas na versão atual da lei e nas normas do regulador.</p>
+                <p>O descumprimento dos deveres preventivos pode gerar sanções administrativas, que são diferentes da pena pelo crime de lavagem. As alterações legislativas também ampliaram setores obrigados, fortaleceram medidas patrimoniais e consolidaram o papel do Coaf.</p>
+                <p class="remember"><strong>Para lembrar:</strong> a lei não é apenas penal; ela também organiza deveres preventivos e institucionais.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Uma empresa de setor regulado atualiza seus controles e encontra uma operação que merece análise segundo as regras aplicáveis.</p>
+                  <p><strong>Pergunta:</strong> qual é a função do controle preventivo?</p>
+                  <p><strong>Ideia:</strong> registrar e encaminhar informações previstas nas normas. A comunicação não acusa nem condena o cliente.</p>
+                </div>
+                <div class="source-row"><a href="modulo_01_unidade_2_a_lei_n_9613_de_1998.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u02"> Já estudei</label></div>
+              </div>
+            </details>
+
+            <details class="study-card" id="u03">
+              <summary><span><span class="card-label">Unidade 3</span><span class="card-title">Aspectos materiais: condutas e responsabilidade</span></span></summary>
+              <div class="card-content">
+                <p>A lei descreve ações como <strong>ocultar</strong> ou <strong>dissimular</strong> a natureza, a origem, a localização, a movimentação ou a propriedade de bens de origem ilícita. Também aborda atos como converter, adquirir, receber, guardar ou transferir esses bens, conforme as hipóteses legais.</p>
+                <p>Ocultar é esconder ou não revelar; dissimular é disfarçar ou criar uma aparência diferente. A lei também trata de quem utiliza bens sabendo de sua origem ilícita e de outras condutas descritas nos parágrafos do artigo 1º. Cada hipótese tem requisitos próprios, por isso não se deve transformar uma lista de exemplos em conclusão automática sobre um caso concreto.</p>
+                <p>A análise depende dos fatos, das provas e do elemento subjetivo exigido. O material discute dolo direto e eventual, concurso de agentes, consumação e tentativa. A participação de várias pessoas pode ser relevante, mas a responsabilidade de cada uma deve ser examinada conforme sua conduta, sua contribuição e seu vínculo subjetivo com o fato; responsabilidade objetiva não é regra do Direito Penal brasileiro.</p>
+                <p>A infração antecedente e a lavagem são condutas distintas, embora relacionadas. A lavagem tem autonomia material e processual nos termos legais: pode ser investigada separadamente, mas é preciso demonstrar a existência de uma infração penal anterior e a relação dos bens com ela.</p>
+                <p class="remember"><strong>Para lembrar:</strong> rastrear o caminho dos bens ajuda a entender a conduta e a possível ligação com a infração que gerou os valores.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Uma pessoa recebe e guarda um bem que, segundo a investigação, veio de uma infração anterior.</p>
+                  <p><strong>Pergunta:</strong> basta provar que a pessoa teve contato com o bem?</p>
+                  <p><strong>Ideia:</strong> não. Devem ser examinados a conduta prevista em lei, a origem do bem e o que a pessoa sabia ou pretendia.</p>
+                </div>
+                <div class="source-row"><a href="modulo_01_unidade_3_aspectos_materiais_da_lavagem_de_dinheiro.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u03"> Já estudei</label></div>
+              </div>
+            </details>
+
+            <details class="study-card" id="u04">
+              <summary><span><span class="card-label">Unidade 4</span><span class="card-title">Aspectos processuais</span></span></summary>
+              <div class="card-content">
+                <p>O processo por lavagem tem autonomia em relação ao processo da infração antecedente: não é obrigatório que o outro processo já tenha terminado. A acusação, porém, deve apresentar elementos suficientes sobre a existência da infração que teria gerado os bens.</p>
+                <ul>
+                  <li>O processo da lavagem pode tramitar independentemente do processo da infração antecedente; a infração anterior não precisa já ter sido julgada.</li>
+                  <li>Para iniciar a ação por lavagem, a denúncia deve vir acompanhada de indícios suficientes da existência da infração antecedente. Isso não significa que basta uma suspeita vaga: os fatos precisam ser descritos e sustentados por elementos informativos.</li>
+                  <li>A competência judicial pode depender da infração antecedente e dos interesses atingidos. Em regra, a Justiça Estadual é competente; há hipóteses de competência federal previstas na Constituição e na lei.</li>
+                  <li>A denúncia deve descrever os fatos e individualizar, tanto quanto possível, a conduta atribuída a cada pessoa.</li>
+                  <li>O material didático também explica regras específicas sobre o andamento do processo quando o acusado não comparece.</li>
+                </ul>
+                <p>A autonomia processual evita que a persecução da lavagem fique necessariamente parada à espera do processo anterior, o que é importante quando os crimes ocorreram em lugares ou países diferentes. Ao mesmo tempo, a relação com a infração antecedente continua essencial: se ficar demonstrado que não houve infração penal anterior, pode faltar o pressuposto para a lavagem.</p>
+                <div class="callout"><p><strong>Atenção:</strong> esta unidade resume entendimentos jurídicos apresentados no PDF. Regras e interpretações podem mudar; consulte a legislação e a jurisprudência atuais.</p></div>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Há indícios de uma infração que gerou recursos e de atos posteriores ligados à ocultação, mas o processo sobre a infração anterior ainda não terminou.</p>
+                  <p><strong>Pergunta:</strong> isso sempre impede o processo por lavagem?</p>
+                  <p><strong>Ideia:</strong> não necessariamente. A lei prevê autonomia processual, mas a acusação ainda precisa apresentar elementos sobre a infração antecedente e a ligação dos bens.</p>
+                </div>
+                <div class="source-row"><a href="modulo_01_unidade_4_aspectos_processuais_da_lavagem_de_dinheiro.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u04"> Já estudei</label></div>
+              </div>
+            </details>
+
+            <details class="study-card" id="u05">
+              <summary><span><span class="card-label">Unidade 5</span><span class="card-title">Produção de prova e medidas sobre bens</span></span></summary>
+              <div class="card-content">
+                <p>Investigações podem combinar documentos, dados financeiros e fiscais, registros de comunicação e outras fontes, sempre observando as garantias legais e, quando exigido, a autorização judicial.</p>
+                <p>O sigilo bancário, fiscal, telefônico e telemático protege a privacidade, mas pode ser afastado nos casos e pela autoridade competente, com fundamentação e respeito às regras aplicáveis. A busca e apreensão procura objetos, documentos ou outros elementos relevantes; deve ter base legal e limites definidos, não ser uma busca indiscriminada.</p>
+                <p>O PDF distingue a apreensão de bens e documentos, que pode ter finalidade probatória, das medidas assecuratórias, que preservam patrimônio. Entre estas estão sequestro, arresto e hipoteca legal, usados conforme a natureza do bem e a finalidade da medida. A decisão judicial pode precisar de registro em cartórios ou órgãos de trânsito, além da indicação de quem ficará responsável pela guarda.</p>
+                <p>Administrar bens apreendidos também importa: veículos, imóveis, animais, embarcações e ativos financeiros podem se deteriorar, perder valor ou gerar custos. Quando a lei permite, a alienação antecipada converte o bem em valor financeiro para preservar seu equivalente até o desfecho do processo. Se houver condenação e perdimento, a destinação deve seguir a lei e considerar reparação do dano e direitos de terceiros de boa-fé.</p>
+                <p class="remember"><strong>Para lembrar:</strong> prova esclarece fatos; medida patrimonial preserva bens. São finalidades relacionadas, mas diferentes.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Uma equipe encontra documentos relevantes e também localiza um veículo que pode estar ligado aos fatos.</p>
+                  <p><strong>Pergunta:</strong> documento e veículo exigem a mesma providência?</p>
+                  <p><strong>Ideia:</strong> não necessariamente. A prova deve ser preservada para esclarecer os fatos; o veículo pode exigir medida patrimonial e gestão próprias.</p>
+                </div>
+                <div class="source-row"><a href="modulo_01_unidade_5_producao_de_prova.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u05"> Já estudei</label></div>
+              </div>
+            </details>
+          </div>
+          <div class="module-checkpoint">
+            <h4>Fechando o módulo: três ideias para guardar</h4>
+            <ul>
+              <li>As etapas da lavagem ajudam a explicar um fenômeno, mas não precisam aparecer todas em cada caso.</li>
+              <li>Uma infração antecedente e a lavagem são relacionadas, porém têm elementos próprios.</li>
+              <li>Informação, prova e medida sobre bens têm funções diferentes; cada uma exige base legal apropriada.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="module" id="modulo-2">
+          <header class="module-head">
+            <span class="module-kicker">Módulo 2 · 3 unidades</span>
+            <h3>Corrupção</h3>
+            <p class="module-summary">Um fenômeno amplo, enfrentado com ferramentas penais, administrativas, civis e preventivas.</p>
+          </header>
+          <div class="module-content">
+            <details class="study-card" id="u06">
+              <summary><span><span class="card-label">Unidade 1</span><span class="card-title">O que é corrupção?</span></span></summary>
+              <div class="card-content">
+                <p>Em sentido amplo, corrupção é o abuso de uma posição de confiança para obter benefício indevido. Pode envolver agentes públicos ou privados e prejudica o interesse coletivo, a confiança nas instituições e a qualidade dos serviços.</p>
+                <p>Os materiais destacam que o fenômeno é internacional, tem causas e efeitos variados e exige prevenção, transparência, integridade, participação social e cooperação entre países.</p>
+                <p>Não há uma única explicação para a corrupção. Ela pode crescer quando existe oportunidade sem fiscalização, quando os controles são frágeis, quando há pouca transparência ou quando a organização tolera desvios. Esses fatores ajudam a pensar em prevenção, mas não justificam nem provam a conduta de uma pessoa específica.</p>
+                <p>As consequências também vão além do valor desviado: podem incluir serviços de pior qualidade, competição injusta, desperdício de recursos, desigualdade e perda de confiança pública. Por isso, respostas eficazes combinam investigação e responsabilização com transparência, controles, participação cidadã e uma cultura de integridade.</p>
+                <p>Convenções internacionais, como as da OEA, da OCDE e das Nações Unidas, estimulam os países a criminalizar certas condutas, prevenir suborno, cooperar e recuperar ativos. O Brasil participa desse esforço por meio de leis e instituições próprias.</p>
+                <p class="remember"><strong>Para lembrar:</strong> o benefício privado pode custar caro à sociedade, mesmo quando o dano não é imediatamente visível.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Um serviço público fica pior quando uma decisão é tomada para favorecer um interesse particular, em vez de atender a critérios transparentes.</p>
+                  <p><strong>Pergunta:</strong> quem pode ser afetado, além das pessoas diretamente envolvidas?</p>
+                  <p><strong>Ideia:</strong> a coletividade pode perder qualidade no serviço, recursos e confiança nas instituições.</p>
+                </div>
+                <div class="source-row"><a href="modulo_02_unidade_1_o_que_e_corrupcao.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u06"> Já estudei</label></div>
+              </div>
+            </details>
+
+            <details class="study-card" id="u07">
+              <summary><span><span class="card-label">Unidade 2</span><span class="card-title">Aspectos materiais da corrupção</span></span></summary>
+              <div class="card-content">
+                <div class="two-column">
+                  <div class="mini-panel"><h4>Corrupção ativa</h4><p>Em linhas gerais, oferecer ou prometer vantagem indevida a funcionário público para influenciar ato de ofício.</p></div>
+                  <div class="mini-panel"><h4>Corrupção passiva</h4><p>Em linhas gerais, funcionário público solicitar ou receber vantagem indevida, ou aceitar sua promessa.</p></div>
+                </div>
+                <p>O curso diferencia esses crimes de outras condutas relacionadas, como peculato, concussão, tráfico de influência e fraude em licitações. Também analisa causas como oportunidades, incentivos, falhas de controle e cultura organizacional. Corrupção pode coexistir com lavagem: o dinheiro recebido pode ser ocultado depois.</p>
+                <p>Para estudar os tipos penais, separe quatro perguntas: quem praticou a conduta? O que fez ou deixou de fazer? Qual era o vínculo com a função pública? E qual era a finalidade ou o elemento subjetivo exigido? A resposta depende do tipo legal e dos fatos, não apenas do nome dado à situação.</p>
+                <p>Corrupção ativa e passiva são crimes distintos. Em algumas situações uma pessoa pode oferecer vantagem sem que o funcionário a solicite; em outras, a iniciativa pode partir do agente público. A existência de um crime não exige que o outro também tenha ocorrido: cada conduta deve ser examinada separadamente.</p>
+                <p class="remember"><strong>Para lembrar:</strong> ativa = oferta; passiva = solicitação ou recebimento pelo agente público. Os elementos legais exatos devem ser conferidos na lei.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Em uma situação hipotética, alguém oferece uma vantagem indevida relacionada a um ato público, e outra pessoa a recusa.</p>
+                  <p><strong>Pergunta:</strong> a recusa apaga automaticamente a conduta de quem ofereceu?</p>
+                  <p><strong>Ideia:</strong> a análise depende dos elementos do tipo penal e das provas; a conduta de cada pessoa deve ser avaliada separadamente.</p>
+                </div>
+                <div class="source-row"><a href="modulo_02_unidade_2_aspectos_materiais_da_corrupcao.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u07"> Já estudei</label></div>
+              </div>
+            </details>
+
+            <details class="study-card" id="u08">
+              <summary><span><span class="card-label">Unidade 3</span><span class="card-title">Lei Anticorrupção: responsabilidade de empresas</span></span></summary>
+              <div class="card-content">
+                <p>A Lei nº 12.846/2013 permite responsabilizar pessoas jurídicas, nas esferas civil e administrativa, por atos lesivos praticados em seu interesse ou benefício. A responsabilidade da empresa é objetiva: não exige provar dolo ou culpa da empresa, mas é necessário demonstrar os requisitos legais, incluindo a conduta e o vínculo com seu interesse ou benefício.</p>
+                <ul>
+                  <li>O Processo Administrativo de Responsabilização (PAR) apura os fatos com direito de defesa.</li>
+                  <li>As sanções podem incluir multa e publicação extraordinária da decisão, entre outras consequências previstas em lei.</li>
+                  <li>Programas de integridade ajudam a prevenir, detectar e responder a irregularidades.</li>
+                  <li>Acordos de leniência podem beneficiar a investigação quando há colaboração efetiva e cumprimento dos requisitos legais.</li>
+                </ul>
+                <p>A Lei Anticorrupção trata de atos lesivos contra a administração pública nacional ou estrangeira. A responsabilidade administrativa e civil da pessoa jurídica não substitui a apuração da responsabilidade individual de dirigentes, empregados ou terceiros que tenham participado. Cada pessoa responde conforme as regras que lhe são aplicáveis.</p>
+                <p>O PAR é um processo formal: a administração identifica os fatos, instaura a apuração, permite manifestação e produção de defesa e decide com base no que foi reunido. A empresa pode apresentar informações e provas. A aplicação de sanção deve ser motivada e observar o procedimento legal.</p>
+                <p>Um programa de integridade efetivo não é apenas um código escrito. Ele precisa ser apoiado pela liderança, adequado aos riscos do negócio, conhecido pelas equipes, acompanhado por controles, canais confiáveis de relato e medidas de correção. Acordos de leniência, por sua vez, exigem colaboração útil e cumprimento de condições legais; seus benefícios não são automáticos nem eliminam toda responsabilidade.</p>
+                <p class="remember"><strong>Para lembrar:</strong> responsabilizar a empresa não elimina automaticamente a possível responsabilidade individual de pessoas físicas.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Uma empresa recebe um relato sobre possível irregularidade em uma contratação e inicia uma apuração interna conforme suas regras.</p>
+                  <p><strong>Pergunta:</strong> ter um código de ética, sozinho, demonstra que existe integridade efetiva?</p>
+                  <p><strong>Ideia:</strong> não. Importam a aplicação real dos controles, a resposta da liderança e a correção de falhas, além do respeito ao direito de defesa.</p>
+                </div>
+                <div class="source-row"><a href="modulo_02_unidade_3_lei_anticorrupcao_n_12846_2013.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u08"> Já estudei</label></div>
+              </div>
+            </details>
+          </div>
+          <div class="module-checkpoint">
+            <h4>Fechando o módulo: três ideias para guardar</h4>
+            <ul>
+              <li>Corrupção é um fenômeno amplo; os crimes específicos têm elementos legais próprios.</li>
+              <li>A responsabilidade da empresa e a responsabilidade individual são analisadas por regras diferentes.</li>
+              <li>Prevenção depende de controles usados de verdade, não apenas de documentos formais.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="module" id="modulo-3">
+          <header class="module-head">
+            <span class="module-kicker">Módulo 3 · 2 unidades</span>
+            <h3>Cooperação jurídica internacional</h3>
+            <p class="module-summary">Quando provas, pessoas ou bens estão em outro país, um Estado precisa pedir ajuda respeitando a soberania do outro.</p>
+          </header>
+          <div class="module-content">
+            <details class="study-card" id="u09">
+              <summary><span><span class="card-label">Unidade 1</span><span class="card-title">Introdução à cooperação entre países</span></span></summary>
+              <div class="card-content">
+                <p>As autoridades de um país não podem simplesmente exercer poder dentro do território de outro. Tratados e mecanismos de cooperação permitem solicitar atos como obter provas, localizar bens, comunicar atos judiciais ou pedir a entrega de uma pessoa.</p>
+                <ul>
+                  <li><strong>Cooperação ativa:</strong> o Brasil pede ajuda a outro país.</li>
+                  <li><strong>Cooperação passiva:</strong> outro país pede ajuda ao Brasil.</li>
+                  <li><strong>Carta rogatória:</strong> encaminha pedido ligado a um ato judicial estrangeiro sujeito ao procedimento aplicável no Brasil.</li>
+                  <li><strong>Auxílio direto:</strong> autoridades brasileiras realizam, segundo a lei brasileira, o ato solicitado; não se trata simplesmente de executar uma decisão estrangeira.</li>
+                  <li><strong>Extradição:</strong> instrumento voltado à entrega de pessoa, segundo regras e garantias próprias.</li>
+                </ul>
+                <p>A cooperação é necessária porque autoridades brasileiras não podem executar atos de investigação ou decisões coercitivas em território estrangeiro sem consentimento e base jurídica. Um pedido pode buscar depoimentos, documentos, dados, localização de bens, bloqueio ou apreensão. O país requerido decide e executa o ato de acordo com seus compromissos e suas próprias regras.</p>
+                <p>Os tratados e a legislação definem canais, requisitos, documentos, idioma, confidencialidade e motivos para recusar ou limitar pedidos. A Autoridade Central ajuda a encaminhá-los e a manter contato entre os países. Em casos urgentes, canais de contato rápido podem facilitar a coordenação, mas não substituem o procedimento formal quando ele é exigido.</p>
+                <p>É útil distinguir pedidos de prova e medidas sobre patrimônio da extradição: esta última trata da entrega de uma pessoa para responder a processo ou cumprir pena, e possui requisitos próprios, inclusive garantias fundamentais. Cooperação não significa que um país transfira sua soberania ao outro.</p>
+                <p class="remember"><strong>Para lembrar:</strong> cooperação conecta jurisdições; não apaga as fronteiras nem as regras de cada país.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Uma testemunha e documentos relevantes estão em outro país, onde também pode existir um bem relacionado à investigação.</p>
+                  <p><strong>Pergunta:</strong> autoridades brasileiras podem simplesmente entrar nesse país e recolher tudo?</p>
+                  <p><strong>Ideia:</strong> não. Devem solicitar a cooperação do Estado onde a prova ou o bem está e respeitar o procedimento aplicável.</p>
+                </div>
+                <div class="source-row"><a href="modulo_03_unidade_1_introducao_a_cooperacao_juridica_internacional.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u09"> Já estudei</label></div>
+              </div>
+            </details>
+
+            <details class="study-card" id="u10">
+              <summary><span><span class="card-label">Unidade 2</span><span class="card-title">Carta rogatória passiva e auxílio direto</span></span></summary>
+              <div class="card-content">
+                <p>Na carta rogatória que chega ao Brasil, o pedido percorre as autoridades competentes. O Superior Tribunal de Justiça pode analisar os requisitos aplicáveis e conceder o <em>exequatur</em> para o cumprimento, sem reexaminar o mérito do processo estrangeiro.</p>
+                <p>No auxílio direto, não se pede simplesmente que o Brasil execute uma decisão judicial estrangeira: autoridades brasileiras avaliam e praticam o ato conforme o direito brasileiro. A Autoridade Central ajuda a receber, encaminhar e adequar pedidos; em matéria penal, o Departamento de Recuperação de Ativos e Cooperação Jurídica Internacional (DRCI), no Ministério da Justiça, exerce esse papel em vários tratados.</p>
+                <p>Depois da autorização aplicável, o ato é cumprido pela autoridade brasileira competente, que pode precisar de ordem judicial se a medida afetar direitos protegidos. O pedido deve explicar o que se busca, por que é relevante, quem ou qual bem está relacionado e quais documentos permitem executar a providência.</p>
+                <p>Uma carta rogatória pode pedir, por exemplo, a realização de um ato judicial estrangeiro no Brasil. O STJ verifica requisitos de admissibilidade, como a regularidade formal e a compatibilidade com a ordem pública, sem funcionar como tribunal de recurso do processo estrangeiro. No auxílio direto, a solicitação costuma ser instruída para que a autoridade brasileira formule ou obtenha a medida doméstica adequada.</p>
+                <p class="remember"><strong>Para lembrar:</strong> carta rogatória = ato judicial estrangeiro e procedimento de reconhecimento; auxílio direto = providência realizada pelas autoridades brasileiras.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Um país pede que uma pessoa seja ouvida no Brasil para um processo que tramita no exterior.</p>
+                  <p><strong>Pergunta:</strong> o pedido é automaticamente cumprido exatamente como foi escrito?</p>
+                  <p><strong>Ideia:</strong> não. A autoridade brasileira verifica o canal, os requisitos e a forma legal de praticar o ato no Brasil.</p>
+                </div>
+                <div class="source-row"><a href="modulo_03_unidade_2_procedimento_da_carta_rogatoria_passiva.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u10"> Já estudei</label></div>
+              </div>
+            </details>
+          </div>
+          <div class="module-checkpoint">
+            <h4>Fechando o módulo: três ideias para guardar</h4>
+            <ul>
+              <li>Cooperação ativa é um pedido feito pelo Brasil; cooperação passiva é um pedido recebido pelo Brasil.</li>
+              <li>Carta rogatória e auxílio direto têm caminhos diferentes, embora ambos possam apoiar uma investigação.</li>
+              <li>O país requerido pratica os atos em seu território conforme suas leis e os compromissos aplicáveis.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="module" id="modulo-4">
+          <header class="module-head">
+            <span class="module-kicker">Módulo 4 · 3 unidades</span>
+            <h3>Prevenção e inteligência financeira</h3>
+            <p class="module-summary">O sistema preventivo recebe sinais de diferentes setores; o Coaf analisa informações e dissemina inteligência.</p>
+          </header>
+          <div class="module-content">
+            <details class="study-card" id="u11">
+              <summary><span><span class="card-label">Unidade 1</span><span class="card-title">Como surgiu a prevenção no Brasil?</span></span></summary>
+              <div class="card-content">
+                <p>Compromissos internacionais — como convenções da ONU, acordos regionais e recomendações do GAFI — influenciaram a Lei nº 9.613/1998 e o sistema brasileiro de prevenção à lavagem e ao financiamento do terrorismo.</p>
+                <p>A estratégia combina criminalização, cooperação internacional, deveres preventivos para setores expostos e uma Unidade de Inteligência Financeira nacional. O Coaf recebe informações, analisa e pode comunicar indícios às autoridades competentes.</p>
+                <p>O Brasil passou a organizar esse sistema depois de assumir compromissos internacionais de enfrentamento à lavagem. A Lei nº 9.613/1998 criou o crime de lavagem e estabeleceu deveres para determinados setores; alterações posteriores ampliaram o alcance da lei e atualizaram a estrutura institucional. O Coaf foi criado como órgão de inteligência financeira e hoje atua como UIF brasileira.</p>
+                <p>É importante diferenciar as funções: os setores obrigados identificam clientes, mantêm registros e enviam comunicações segundo suas regras; o Coaf recebe e analisa informações; e as autoridades de investigação e persecução avaliam providências dentro de suas competências. Essa separação ajuda a evitar que uma comunicação seja confundida com uma acusação ou condenação.</p>
+                <p class="remember"><strong>Para lembrar:</strong> prevenção é uma primeira linha de defesa; investigação e julgamento continuam sendo tarefas distintas.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Uma instituição registra informações conforme as regras do seu setor, o Coaf analisa comunicações e uma autoridade avalia se precisa aprofundar uma apuração.</p>
+                  <p><strong>Pergunta:</strong> essas três atividades são a mesma coisa?</p>
+                  <p><strong>Ideia:</strong> não. São etapas e responsabilidades diferentes, conectadas por regras de sigilo e uso apropriado das informações.</p>
+                </div>
+                <div class="source-row"><a href="modulo_04_unidade_1_origem_da_prevencao_e_do_combate_a_lavagem_de_dinheiro_no_brasil.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u11"> Já estudei</label></div>
+              </div>
+            </details>
+
+            <details class="study-card" id="u12">
+              <summary><span><span class="card-label">Unidade 2</span><span class="card-title">Mecanismo de controle e comunicações</span></span></summary>
+              <div class="card-content">
+                <p>A abordagem baseada em risco direciona controles mais fortes para situações de maior risco e controles proporcionais nos demais casos. Setores obrigados devem conhecer seus clientes, manter registros e observar operações conforme as regras de seu regulador.</p>
+                <div class="two-column">
+                  <div class="mini-panel"><h4>COE / comunicação automática</h4><p>É feita por critérios objetivos definidos em norma, como certas operações em espécie acima de limites aplicáveis ao setor.</p></div>
+                  <div class="mini-panel"><h4>COS / operação suspeita</h4><p>É enviada quando uma operação apresenta sinais que merecem atenção, conforme os critérios e procedimentos do regulador.</p></div>
+                </div>
+                <p>As comunicações devem ser feitas sem avisar a pessoa envolvida, observadas as regras legais. Comunicar uma operação não é declarar que houve crime: é alimentar a análise de inteligência.</p>
+                <p>Abordagem baseada em risco significa identificar, compreender e priorizar riscos de lavagem e financiamento do terrorismo, em vez de tratar todas as situações como iguais. Os controles devem ser proporcionais ao risco e ao tipo de atividade, sem abandonar as exigências mínimas da lei e do regulador.</p>
+                <p>Conhecer o cliente pode incluir verificar sua identidade, entender a finalidade da relação comercial, identificar o beneficiário final e atualizar informações quando necessário. Registros ajudam a reconstruir operações; políticas internas definem responsabilidades e treinamento; auditoria e monitoramento verificam se os controles funcionam.</p>
+                <p>A comunicação automática (COE) segue um critério objetivo definido em norma; a comunicação de operação suspeita (COS) decorre de análise e sinais que merecem avaliação. Uma COE não significa que a operação seja suspeita, e uma COS não prova crime. Em ambos os casos, a análise posterior cabe às autoridades competentes.</p>
+                <p class="remember"><strong>Para lembrar:</strong> COE = critério objetivo; COS = suspeita analisada pela entidade obrigada.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Uma operação se enquadra em um critério objetivo de comunicação; outra não atinge esse critério, mas apresenta sinais que a entidade deve avaliar.</p>
+                  <p><strong>Pergunta:</strong> qual diferença conceitual aparece?</p>
+                  <p><strong>Ideia:</strong> a primeira pode gerar comunicação automática prevista em norma; a segunda pode ser analisada como suspeita. Nenhuma delas prova crime.</p>
+                </div>
+                <div class="source-row"><a href="modulo_04_unidade_2_mecanismo_de_controle.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u12"> Já estudei</label></div>
+              </div>
+            </details>
+
+            <details class="study-card" id="u13">
+              <summary><span><span class="card-label">Unidade 3</span><span class="card-title">Coaf e Relatórios de Inteligência Financeira (RIF)</span></span></summary>
+              <div class="card-content">
+                <p>O Coaf desempenha três funções: <strong>receber</strong> comunicações, <strong>analisar</strong> informações e <strong>disseminar</strong> relatórios às autoridades competentes.</p>
+                <ul>
+                  <li><strong>RIF de ofício:</strong> produzido a partir das comunicações recebidas das pessoas obrigadas.</li>
+                  <li><strong>RIF de intercâmbio:</strong> análise iniciada após comunicação formal de uma autoridade que já conduz procedimento.</li>
+                  <li><strong>Informação de UIF estrangeira:</strong> pode circular por redes próprias e ter limites de uso definidos pelo país que a enviou.</li>
+                </ul>
+                <p>O RIF é inteligência financeira, não uma sentença nem uma prova automática de culpa. Cabe às autoridades destinatárias avaliar se há base para medidas investigativas e processuais.</p>
+                <p>O Coaf trabalha com informações recebidas de pessoas obrigadas, dados disponíveis em bases legalmente acessíveis e intercâmbio com outras UIFs. A análise pode relacionar pessoas, empresas, contas, períodos e operações; um RIF apresenta informações relevantes, mas não substitui a obtenção formal de provas necessárias para um processo.</p>
+                <p>Um RIF de intercâmbio começa com uma solicitação de autoridade que já conduz procedimento e delimita uma necessidade de análise. O relatório de ofício pode decorrer do exame das comunicações encaminhadas pelos setores obrigados. Informações estrangeiras podem ter condições de uso e compartilhamento, que devem ser respeitadas pela autoridade destinatária.</p>
+                <p>O sigilo e o uso apropriado das informações são essenciais. A existência de um relatório pode orientar linhas de apuração, mas não autoriza, por si só, concluir que alguém cometeu crime nem substituir as garantias e os requisitos legais de cada medida.</p>
+                <p class="remember"><strong>Para lembrar:</strong> Coaf analisa e comunica; polícia, Ministério Público e Judiciário têm atribuições próprias.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Uma autoridade recebe um RIF com informações financeiras que podem ser relevantes para uma investigação.</p>
+                  <p><strong>Pergunta:</strong> o relatório encerra a apuração e prova a culpa?</p>
+                  <p><strong>Ideia:</strong> não. Ele pode orientar diligências legais; os fatos precisam ser investigados e avaliados pelas autoridades competentes.</p>
+                </div>
+                <div class="source-row"><a href="modulo_04_unidade_3_producao_dos_rif.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u13"> Já estudei</label></div>
+              </div>
+            </details>
+          </div>
+          <div class="module-checkpoint">
+            <h4>Fechando o módulo: três ideias para guardar</h4>
+            <ul>
+              <li>Pessoas obrigadas previnem e comunicam; o Coaf analisa inteligência financeira.</li>
+              <li>COE se relaciona a critérios objetivos; COS comunica uma suspeita após análise.</li>
+              <li>Um RIF pode orientar uma apuração, mas não é sentença nem prova automática de culpa.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="module" id="modulo-5">
+          <header class="module-head">
+            <span class="module-kicker">Módulo 5 · 1 unidade</span>
+            <h3>Suborno transnacional</h3>
+            <p class="module-summary">Corrupção que envolve agentes públicos estrangeiros e relações comerciais internacionais.</p>
+          </header>
+          <div class="module-content">
+            <details class="study-card" id="u14">
+              <summary><span><span class="card-label">Unidade 1</span><span class="card-title">Lei nº 12.846/2013 e corrupção no exterior</span></span></summary>
+              <div class="card-content">
+                <p>O suborno transnacional ocorre quando uma vantagem indevida é oferecida ou prometida a agente público estrangeiro em contexto de negócios internacionais. Convenções da OEA, da OCDE e da ONU ajudaram a impulsionar regras nacionais sobre o tema.</p>
+                <p>A Lei Anticorrupção permite responsabilizar empresas brasileiras por atos lesivos contra administrações públicas estrangeiras nas hipóteses legais. A CGU tem atribuições específicas nesse campo. A empresa pode responder independentemente da responsabilidade pessoal de quem praticou o ato.</p>
+                <p>A unidade explica o PAR, as sanções administrativas, os programas de integridade e o acordo de leniência. Colaborar pode reduzir determinadas sanções, desde que os requisitos sejam cumpridos; a colaboração não apaga automaticamente todas as consequências.</p>
+                <p>O combate ao suborno transnacional procura impedir que empresas obtenham vantagens comerciais por meio de pagamentos indevidos a agentes públicos de outros países. A Convenção da OCDE de 1997 foi um marco, pois incentivou os Estados a criminalizar o suborno de funcionário público estrangeiro em transações comerciais internacionais. O Brasil também assumiu compromissos regionais e da ONU.</p>
+                <p>A Lei nº 12.846/2013 alcança atos contra administração pública estrangeira, nos termos legais, e prevê responsabilização administrativa e civil de pessoas jurídicas. A lei brasileira também prevê competência extraterritorial em hipóteses definidas. A CGU exerce funções específicas, inclusive na apuração e negociação de leniência em casos de sua competência.</p>
+                <p>Para reduzir riscos, organizações podem avaliar intermediários, parceiros e mercados, estabelecer regras claras sobre presentes e hospitalidade, documentar pagamentos, separar funções de aprovação e oferecer canais de consulta e relato. Esses controles devem ser proporcionais aos riscos e acompanhados de resposta consistente a desvios.</p>
+                <p class="remember"><strong>Para lembrar:</strong> prevenir suborno no exterior também protege a concorrência justa e a integridade dos negócios.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Uma empresa participa de um projeto em outro país e um representante propõe uma vantagem indevida a um agente público estrangeiro.</p>
+                  <p><strong>Pergunta:</strong> a empresa pode ignorar o fato por ter sido praticado por um intermediário?</p>
+                  <p><strong>Ideia:</strong> não deve presumir que está protegida. A lei prevê hipóteses de responsabilidade da pessoa jurídica; os fatos e requisitos legais precisam ser apurados.</p>
+                </div>
+                <div class="source-row"><a href="modulo_05_unidade_1_suborno_transnacional_e_a_lei_n_12846_2013.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u14"> Já estudei</label></div>
+              </div>
+            </details>
+          </div>
+          <div class="module-checkpoint">
+            <h4>Fechando o módulo: três ideias para guardar</h4>
+            <ul>
+              <li>Suborno transnacional envolve agente público estrangeiro e contexto de negócios internacionais.</li>
+              <li>A pessoa jurídica pode responder administrativamente e civilmente sem excluir a análise da conduta individual.</li>
+              <li>Integridade exige controles proporcionais ao risco, aplicação prática e resposta a problemas.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="module" id="modulo-6">
+          <header class="module-head">
+            <span class="module-kicker">Módulo 6 · 4 unidades</span>
+            <h3>Recuperação de ativos</h3>
+            <p class="module-summary">Seguir o patrimônio, preservá-lo e dar a ele uma destinação legal também faz parte do combate ao crime.</p>
+          </header>
+          <div class="module-content">
+            <details class="study-card" id="u15">
+              <summary><span><span class="card-label">Unidade 1</span><span class="card-title">Etapas da recuperação de ativos</span></span></summary>
+              <div class="card-content">
+                <p>Recuperar ativos significa buscar a devolução ao Estado do produto ou proveito de uma infração e, conforme o caso, garantir a reparação dos danos. É um processo que vai além de encontrar e apreender um bem.</p>
+                <ol class="steps">
+                  <li><strong>Identificar:</strong> reconhecer pessoas, empresas, relações e ativos que podem estar ligados aos fatos.</li>
+                  <li><strong>Localizar:</strong> descobrir onde estão os bens, inclusive quando foram transferidos entre cidades ou países.</li>
+                  <li><strong>Apreender ou bloquear:</strong> pedir e executar a medida legal adequada para preservar o bem ou impedir sua movimentação.</li>
+                  <li><strong>Administrar:</strong> guardar, registrar e conservar o patrimônio sob custódia, controlando custos e riscos de desvalorização.</li>
+                  <li><strong>Alienar e destinar:</strong> quando permitido, vender o bem para preservar seu valor e, ao final, dar ao dinheiro ou ao ativo a destinação prevista em lei.</li>
+                </ol>
+                <p>Os PDFs não apresentam todos a mesma divisão. Alguns descrevem identificação e localização como etapas distintas; outros agrupam a localização dentro da identificação e destacam alienação e destinação separadamente. A sequência acima explicita as duas ideias para estudo, mas o número de fases depende da classificação adotada. Além disso, localizar um bem não autoriza apreendê-lo: a preservação exige fundamento e procedimento legal.</p>
+                <p class="remember"><strong>Para lembrar:</strong> identificar quem e o quê; localizar onde; preservar com base legal; administrar; e dar destinação adequada.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Uma investigação identifica um imóvel possivelmente ligado aos fatos, mas ainda precisa confirmar sua localização e a situação de terceiros.</p>
+                  <p><strong>Pergunta:</strong> identificar o bem significa que ele já está bloqueado?</p>
+                  <p><strong>Ideia:</strong> não. Identificação e localização orientam a apuração; a preservação exige medida legal e análise dos direitos envolvidos.</p>
+                </div>
+                <div class="source-row"><a href="modulo_06_unidade_1_introducao_a_recuperacao_de_ativos.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u15"> Já estudei</label></div>
+              </div>
+            </details>
+
+            <details class="study-card" id="u16">
+              <summary><span><span class="card-label">Unidade 2</span><span class="card-title">Fundamentos, finalidade e princípios</span></span></summary>
+              <div class="card-content">
+                <p>Recuperar o patrimônio pode reduzir os recursos disponíveis para manter atividades criminosas, impedir que alguém usufrua de ganhos ilícitos e ajudar a reparar vítimas. A investigação financeira deve caminhar junto com a investigação dos fatos, não começar apenas no fim.</p>
+                <p>O material recomenda uma apuração <strong>contemporânea</strong> (feita sem demora desnecessária), <strong>vertical</strong> (com profundidade sobre cada alvo) e <strong>horizontal</strong> (considerando relações e fluxos entre os envolvidos), sempre dentro da lei e das garantias aplicáveis.</p>
+                <p>Os resultados podem apoiar providências penais, civis, administrativas e de reparação, além de orientar a gestão e a destinação dos bens.</p>
+                <p>Uma investigação patrimonial busca reconstruir como os recursos foram obtidos, movimentados, convertidos ou controlados, e relacionar as informações aos fatos investigados. Ela pode examinar patrimônio registrado em nome de terceiros, desde que haja base legal e elementos para apurar o vínculo, sem presumir que toda pessoa próxima ou todo bem relacionado seja ilícito.</p>
+                <p>Quanto mais cedo a análise financeira começa, maior a chance de preservar registros e evitar a perda de valor de determinados ativos. A atuação deve ser contínua: novas provas podem revelar outros bens, titulares ou conexões, e as medidas precisam ser revistas quando o contexto muda.</p>
+                <p class="remember"><strong>Para lembrar:</strong> seguir o dinheiro em paralelo ajuda a enxergar melhor a dimensão do dano e do benefício.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Uma investigação criminal apura uma possível fraude e, ao mesmo tempo, compara documentos financeiros legalmente obtidos com outros elementos do caso.</p>
+                  <p><strong>Pergunta:</strong> por que fazer isso em paralelo?</p>
+                  <p><strong>Ideia:</strong> pode ajudar a dimensionar benefício, dano e patrimônio relacionado sem esperar o encerramento da investigação criminal.</p>
+                </div>
+                <div class="source-row"><a href="modulo_06_unidade_2_fundamento_e_finalidade.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u16"> Já estudei</label></div>
+              </div>
+            </details>
+
+            <details class="study-card" id="u17">
+              <summary><span><span class="card-label">Unidade 3</span><span class="card-title">Confisco alargado</span></span></summary>
+              <div class="card-content">
+                <p>O confisco alargado é uma medida judicial prevista no Código Penal para hipóteses legais específicas. Em linhas gerais, pode alcançar patrimônio incompatível com os rendimentos lícitos, mesmo sem demonstrar que cada bem veio diretamente do crime pelo qual houve condenação.</p>
+                <p>Não é automático: depende de requisitos legais, pedido adequado, análise judicial e oportunidade de defesa. O curso enfatiza a importância de investigar o patrimônio e apresentar elementos que sustentem a diferença entre os bens e a renda lícita. A medida pode ser considerada apenas em condenações por infrações que atendam aos critérios previstos no artigo 91-A do Código Penal, e o pedido deve ser formulado na denúncia.</p>
+                <p>A pessoa condenada pode contestar a estimativa e demonstrar a origem lícita dos bens. O juiz precisa fundamentar a decisão; bens de terceiros de boa-fé não devem ser atingidos sem que se examinem seus direitos. A regra aplicável e os requisitos devem ser conferidos na legislação atualizada, pois este resumo não substitui a consulta ao texto legal.</p>
+                <div class="callout"><p><strong>Distinção importante:</strong> confisco tradicional se relaciona a instrumentos, produtos ou proveitos de um crime; o alargado se volta a patrimônio desproporcional nas condições previstas em lei.</p></div>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Após uma condenação que atende aos requisitos legais, a acusação pede que o juízo examine uma diferença relevante entre patrimônio e rendimentos lícitos.</p>
+                  <p><strong>Pergunta:</strong> o pedido significa que todo bem da pessoa será automaticamente perdido?</p>
+                  <p><strong>Ideia:</strong> não. Há critérios legais, decisão judicial fundamentada e oportunidade de contestar a estimativa e demonstrar a origem dos bens.</p>
+                </div>
+                <div class="source-row"><a href="modulo_06_unidade_3_confisco_alargado.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u17"> Já estudei</label></div>
+              </div>
+            </details>
+
+            <details class="study-card" id="u18">
+              <summary><span><span class="card-label">Unidade 4</span><span class="card-title">Recuperação de ativos em outros países</span></span></summary>
+              <div class="card-content">
+                <p>Se os bens ou as informações estão no exterior, o país interessado precisa da cooperação das autoridades locais. A cooperação policial e de inteligência pode ajudar a localizar e identificar ativos; medidas como bloqueio, apreensão e devolução normalmente exigem os canais jurídicos adequados.</p>
+                <p>O auxílio jurídico direto, conduzido por Autoridades Centrais, é um instrumento importante para pedir provas e medidas patrimoniais. O PDF destaca o DRCI, redes como RRAG e Egmont e a cooperação policial internacional, incluindo a Interpol.</p>
+                <p>O trabalho costuma combinar duas dimensões. A primeira é localizar informações e ativos por canais de polícia, inteligência e contatos internacionais; a segunda é apresentar um pedido jurídico formal ao Estado onde o bem está, para obter prova ou solicitar uma medida que preserve o patrimônio. Um alerta ou uma informação de localização não equivale a uma ordem de bloqueio.</p>
+                <p>Redes como a RRAG favorecem contatos entre especialistas em recuperação de ativos. O Grupo Egmont conecta UIFs para intercâmbio de inteligência financeira, sujeito a regras de confidencialidade e uso. A Interpol facilita a cooperação policial internacional. Já a Autoridade Central e os tratados aplicáveis orientam pedidos formais de auxílio jurídico. Cada canal tem finalidade própria e não substitui os demais.</p>
+                <p>Para devolver bens ao país de origem, pode ser necessário demonstrar a ligação com os fatos, respeitar procedimentos do Estado requerido e tratar direitos de vítimas e terceiros de boa-fé. A cooperação internacional, portanto, começa cedo e continua até a destinação final.</p>
+                <p class="remember"><strong>Para lembrar:</strong> localizar primeiro; depois, usar o mecanismo jurídico apropriado para preservar e recuperar o ativo.</p>
+                <div class="practice-example">
+                  <h4>Exemplo para pensar</h4>
+                  <p>Uma autoridade recebe informação de que um bem ligado à investigação pode estar em outro país.</p>
+                  <p><strong>Pergunta:</strong> qual é a diferença entre compartilhar a informação e obter um bloqueio?</p>
+                  <p><strong>Ideia:</strong> localizar orienta os próximos passos; bloquear depende de pedido jurídico e de decisão conforme as regras do país onde o bem está.</p>
+                </div>
+                <div class="source-row"><a href="modulo_06_unidade_4_cooperacao_internacional_para_a_recuperacao_de_ativos.pdf">Abrir o PDF desta unidade</a><label class="done-label"><input class="unit-check" type="checkbox" data-unit="u18"> Já estudei</label></div>
+              </div>
+            </details>
+          </div>
+          <div class="module-checkpoint">
+            <h4>Fechando o módulo: três ideias para guardar</h4>
+            <ul>
+              <li>Recuperação de ativos pode incluir identificação, localização, preservação, administração e destinação.</li>
+              <li>A investigação patrimonial funciona melhor quando acompanha a apuração dos fatos.</li>
+              <li>Medidas como confisco alargado e cooperação internacional têm requisitos e procedimentos próprios.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section" id="glossario">
+          <h2 class="section-heading">Glossário em palavras simples</h2>
+          <p class="section-lede">Termos que aparecem várias vezes nos materiais. Você não precisa decorar tudo de uma vez.</p>
+          <dl class="glossary">
+            <div class="glossary-card"><dt>Infração antecedente</dt><dd>A infração que teria gerado os bens ou valores depois relacionados à lavagem.</dd></div>
+            <div class="glossary-card"><dt>Ocultar e dissimular</dt><dd>Esconder ou disfarçar a origem, a natureza, a movimentação ou o controle de algo.</dd></div>
+            <div class="glossary-card"><dt>GAFI</dt><dd>Grupo de Ação Financeira, organismo que estabelece padrões internacionais para combater lavagem de dinheiro e financiamento do terrorismo.</dd></div>
+            <div class="glossary-card"><dt>Pessoa obrigada</dt><dd>Pessoa ou empresa de setor sujeito a deveres legais de prevenção e comunicação.</dd></div>
+            <div class="glossary-card"><dt>Coaf / UIF</dt><dd>Coaf é a Unidade de Inteligência Financeira do Brasil; analisa informações e comunica indícios às autoridades.</dd></div>
+            <div class="glossary-card"><dt>RIF</dt><dd>Relatório de Inteligência Financeira, que reúne informações e análises do Coaf para autoridade competente.</dd></div>
+            <div class="glossary-card"><dt>COE / COS</dt><dd>COE é comunicação baseada em critério objetivo previsto em norma; COS relata uma operação suspeita após análise da entidade obrigada.</dd></div>
+            <div class="glossary-card"><dt>Beneficiário final</dt><dd>Pessoa natural que, ao final da cadeia, possui, controla ou se beneficia de uma empresa ou relação, conforme a definição aplicável.</dd></div>
+            <div class="glossary-card"><dt>Medida assecuratória</dt><dd>Medida legal para preservar bens e assegurar uma possível reparação ou perda futura.</dd></div>
+            <div class="glossary-card"><dt>Alienação antecipada</dt><dd>Venda autorizada de um bem durante o processo para evitar que ele se deteriore ou perca valor, preservando o equivalente em dinheiro.</dd></div>
+            <div class="glossary-card"><dt>Autoridade Central</dt><dd>Órgão que recebe, encaminha e acompanha pedidos formais de cooperação jurídica entre países.</dd></div>
+            <div class="glossary-card"><dt>Auxílio direto</dt><dd>Pedido para que as autoridades do país requerido realizem um ato conforme as próprias leis.</dd></div>
+            <div class="glossary-card"><dt>PAR</dt><dd>Processo Administrativo de Responsabilização, usado para apurar atos lesivos atribuídos a pessoas jurídicas sob a Lei Anticorrupção.</dd></div>
+            <div class="glossary-card"><dt>Acordo de leniência</dt><dd>Acordo em que uma empresa coopera com a apuração e pode receber benefícios previstos em lei.</dd></div>
+            <div class="glossary-card"><dt>Programa de integridade</dt><dd>Regras, controles, treinamento e canais para prevenir, detectar e responder a irregularidades.</dd></div>
+            <div class="glossary-card"><dt>Confisco / perdimento</dt><dd>Perda de bens em favor do Estado, conforme requisitos e decisão previstos em lei.</dd></div>
+            <div class="glossary-card"><dt>Confisco alargado</dt><dd>Medida judicial que pode alcançar patrimônio incompatível com rendimentos lícitos quando os requisitos específicos da lei são atendidos.</dd></div>
+            <div class="glossary-card"><dt>Investigação patrimonial</dt><dd>Apuração de bens, rendas, relações e movimentações financeiras ligadas a uma investigação, respeitando a lei e os direitos das pessoas envolvidas.</dd></div>
+          </dl>
+        </section>
+
+        <section class="section" id="revisao">
+          <h2 class="section-heading">Revisão rápida</h2>
+          <p class="section-lede">As respostas aparecem logo depois de cada pergunta para facilitar o acompanhamento pelo sintetizador de voz. Faça uma pausa para tentar responder antes de continuar a leitura.</p>
+          <details class="quiz-card">
+            <summary>Quais são as três etapas didáticas da lavagem?</summary>
+            <div class="answer">
+              <p>Colocação, circulação (ou ocultação/estratificação) e integração. Nem todo caso precisa percorrer as três etapas.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>Uma comunicação suspeita ao Coaf prova que houve crime?</summary>
+            <div class="answer">
+              <p>Não. É uma informação para análise de inteligência; as autoridades competentes avaliam se há fundamento para investigar.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>Qual a diferença entre COE e COS?</summary>
+            <div class="answer">
+              <p>COE segue critérios objetivos definidos em norma; COS relata uma operação considerada suspeita após análise da entidade obrigada.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>O que significa dizer que a Lei Anticorrupção prevê responsabilidade objetiva da empresa?</summary>
+            <div class="answer">
+              <p>Em termos gerais, não se exige provar dolo ou culpa da pessoa jurídica; ainda é necessário demonstrar os requisitos legais, como a conduta e sua relação com o interesse ou benefício da empresa.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>Em que o auxílio direto se diferencia da carta rogatória?</summary>
+            <div class="answer">
+              <p>No auxílio direto, autoridades brasileiras realizam o ato segundo o direito brasileiro; na carta rogatória, o pedido está ligado a ato judicial estrangeiro e segue o procedimento aplicável para seu cumprimento.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>Quais etapas podem aparecer em uma sequência de recuperação de ativos?</summary>
+            <div class="answer">
+              <p>Identificação, localização, apreensão ou bloqueio, administração, alienação quando permitida e destinação. Os PDFs agrupam algumas etapas de formas diferentes; localização pode aparecer separada ou dentro da identificação.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>Por que a investigação patrimonial deve acontecer junto com a investigação criminal?</summary>
+            <div class="answer">
+              <p>Para identificar bens e fluxos financeiros enquanto as informações ainda podem ser localizadas e para dimensionar danos, benefícios e medidas adequadas.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>O que a cooperação internacional resolve?</summary>
+            <div class="answer">
+              <p>Permite pedir a outro Estado informações, provas ou medidas que o primeiro Estado não pode executar diretamente em território estrangeiro.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>Qual a diferença entre localizar e bloquear um bem?</summary>
+            <div class="answer">
+              <p>Localizar é descobrir onde o bem está; bloquear ou apreender é uma medida legal para preservá-lo e exige o procedimento e a autorização aplicáveis.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>O que é um programa de integridade efetivo?</summary>
+            <div class="answer">
+              <p>É um conjunto de controles apoiados pela liderança, ajustados aos riscos, conhecido pelas equipes e acompanhado por canais de relato, monitoramento e correção.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>Um RIF do Coaf é uma condenação?</summary>
+            <div class="answer">
+              <p>Não. É um relatório de inteligência financeira que pode orientar análises; as autoridades competentes apuram os fatos e avaliam as medidas cabíveis.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>Por que os países precisam cooperar na recuperação de ativos?</summary>
+            <div class="answer">
+              <p>Porque um Estado não pode, por conta própria, executar medidas investigativas ou judiciais no território de outro Estado; precisa usar canais de cooperação apropriados.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>Qual a diferença geral entre corrupção ativa e passiva?</summary>
+            <div class="answer">
+              <p>Em termos gerais, a ativa envolve oferecer ou prometer vantagem indevida; a passiva envolve solicitação ou recebimento pelo funcionário público, conforme os elementos da lei.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>A infração antecedente precisa ter sido julgada antes do processo por lavagem?</summary>
+            <div class="answer">
+              <p>Não necessariamente. A lei prevê autonomia processual, mas a acusação por lavagem ainda precisa de elementos suficientes sobre a infração anterior e a relação dos bens com ela.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>Por que é importante administrar bens que estão sob custódia?</summary>
+            <div class="answer">
+              <p>Para conservar, registrar e acompanhar custos e riscos de perda de valor, além de respeitar a destinação determinada legalmente.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>O confisco alargado acontece automaticamente depois de qualquer condenação?</summary>
+            <div class="answer">
+              <p>Não. Ele só pode ser aplicado se os requisitos legais forem atendidos, houver pedido adequado e o juiz decidir de forma fundamentada, com oportunidade de defesa.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>Uma carta rogatória permite reexaminar o mérito do processo estrangeiro?</summary>
+            <div class="answer">
+              <p>Não. O procedimento brasileiro analisa requisitos para o cumprimento do pedido, sem transformar o STJ em instância de recurso do processo estrangeiro.</p>
+            </div>
+          </details>
+          <details class="quiz-card">
+            <summary>O que é diferente entre identificar e localizar um ativo?</summary>
+            <div class="answer">
+              <p>Identificar é reconhecer qual bem ou relação pode ser relevante; localizar é descobrir onde está. Alguns materiais agrupam essas atividades e outros as separam.</p>
+            </div>
+          </details>
+        </section>
+
+        <section class="section study-plan">
+          <h3>Um jeito simples de estudar</h3>
+          <ol>
+            <li>Escolha uma unidade curta e leia apenas o resumo.</li>
+            <li>Feche o tópico e tente explicar a ideia principal com suas próprias palavras.</li>
+            <li>Abra o PDF original para conferir o que quiser aprofundar.</li>
+            <li>Responda uma pergunta da revisão e marque a unidade quando terminar.</li>
+            <li>Volte ao mesmo assunto no dia seguinte e depois alguns dias mais tarde.</li>
+          </ol>
+        </section>
+
+        <footer class="footer">
+          <p><strong>Sobre este guia:</strong> resumo de apoio ao estudo, elaborado a partir dos 18 PDFs desta pasta. Os textos legais e entendimentos jurídicos podem mudar; para trabalhos, provas ou decisões, confira a legislação, os regulamentos e a jurisprudência atualizados. Este material não substitui orientação profissional.</p>
+          <p>Os links de cada unidade abrem os PDFs originais que devem permanecer na mesma pasta que este arquivo HTML.</p>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <div class="speech-controls" id="speechControls" role="group" aria-label="Controles da leitura em voz alta" hidden>
+    <button class="tool-button" id="pauseSpeech" type="button">⏸ Pausar leitura</button>
+    <button class="tool-button" id="stopSpeech" type="button">⏹ Parar leitura</button>
+  </div>
+
+  <script>
+    (() => {
+    document.querySelectorAll("details.study-card, details.quiz-card").forEach((disclosure) => {
+      const summary = disclosure.querySelector(":scope > summary");
+      const heading = document.createElement("h4");
+      heading.className = disclosure.classList.contains("study-card") ? "study-heading" : "quiz-heading";
+      heading.innerHTML = summary.innerHTML;
+      const article = document.createElement("article");
+      article.className = disclosure.className;
+      if (disclosure.id) article.id = disclosure.id;
+      article.setAttribute("aria-label", summary.textContent.trim());
+      article.append(heading, ...[...disclosure.childNodes].filter((node) => node !== summary));
+      disclosure.replaceWith(article);
+    });
+
+      const checks = [...document.querySelectorAll(".unit-check")];
+      const progressText = document.getElementById("progressText");
+      const progressFill = document.getElementById("progressFill");
+      const progressBar = document.querySelector('[role="progressbar"]');
+      const storageKey = "guia-estudo-unidades-v1";
+
+      let completed = {};
+      try {
+        completed = JSON.parse(localStorage.getItem(storageKey) || "{}");
+      } catch {
+        completed = {};
+      }
+
+      const updateProgress = () => {
+        const total = checks.length;
+        const count = checks.filter((check) => check.checked).length;
+        progressText.textContent = `${count} de ${total} unidades estudadas`;
+        progressFill.style.width = `${total ? (count / total) * 100 : 0}%`;
+        progressBar.setAttribute("aria-valuenow", String(count));
+        const state = Object.fromEntries(checks.map((check) => [check.dataset.unit, check.checked]));
+        try {
+          localStorage.setItem(storageKey, JSON.stringify(state));
+        } catch {
+          progressText.title = "O progresso fica marcado apenas enquanto esta página estiver aberta.";
+        }
+      };
+
+      checks.forEach((check) => {
+        check.checked = Boolean(completed[check.dataset.unit]);
+        check.addEventListener("change", updateProgress);
+      });
+      updateProgress();
+
+      const root = document.documentElement;
+      const speakButton = document.getElementById("speakText");
+      const speechControls = document.getElementById("speechControls");
+      const pauseButton = document.getElementById("pauseSpeech");
+      const stopButton = document.getElementById("stopSpeech");
+      const voiceSelect = document.getElementById("speechVoice");
+      const rateSelect = document.getElementById("speechRate");
+      const speech = window.speechSynthesis;
+      if (!speech || !("SpeechSynthesisUtterance" in window)) {
+        speakButton.disabled = voiceSelect.disabled = rateSelect.disabled = true;
+        speakButton.title = "A leitura em voz alta não está disponível neste navegador.";
+      } else {
+        let reading = false;
+        let paused = false;
+        let continueReading = null;
+        let readingId = 0;
+        let highlightedElement = null;
+        const updateVoices = () => {
+          const selectedVoice = voiceSelect.value;
+          const voices = speech.getVoices();
+          voiceSelect.replaceChildren(new Option("Voz padrão", ""));
+          voices.forEach((voice) => voiceSelect.add(new Option(`${voice.name} (${voice.lang})`, voice.voiceURI)));
+          if (voices.some((voice) => voice.voiceURI === selectedVoice)) voiceSelect.value = selectedVoice;
+        };
+        updateVoices();
+        speech.addEventListener("voiceschanged", updateVoices);
+        const clearHighlight = () => {
+          if (window.CSS && CSS.highlights) CSS.highlights.delete("speech-current");
+          if (highlightedElement) highlightedElement.classList.remove("speech-current");
+          highlightedElement = null;
+        };
+        const resetSpeechButton = () => {
+          reading = false;
+          paused = false;
+          continueReading = null;
+          speechControls.hidden = true;
+          pauseButton.textContent = "⏸ Pausar leitura";
+          clearHighlight();
+          speakButton.setAttribute("aria-pressed", "false");
+          speakButton.innerHTML = '<span aria-hidden="true">🔊</span> Ouvir texto';
+        };
+        const stopReading = () => {
+          readingId++;
+          speech.cancel();
+          speech.resume();
+          resetSpeechButton();
+        };
+        stopButton.addEventListener("click", stopReading);
+        pauseButton.addEventListener("click", () => {
+          if (!reading) return;
+          paused = !paused;
+          pauseButton.textContent = paused ? "▶ Continuar leitura" : "⏸ Pausar leitura";
+          if (paused) {
+            speech.pause();
+            window.scrollTo({ top: window.scrollY, left: window.scrollX, behavior: "instant" });
+          } else if (continueReading) {
+            const next = continueReading;
+            continueReading = null;
+            next();
+          } else {
+            speech.resume();
+          }
+        });
+        const highlight = (range) => {
+          clearHighlight();
+          if (window.CSS && CSS.highlights && window.Highlight) {
+            CSS.highlights.set("speech-current", new Highlight(range));
+          } else {
+            highlightedElement = range.startContainer.parentElement;
+            highlightedElement.classList.add("speech-current");
+          }
+          const rect = range.getBoundingClientRect();
+          const toolbar = document.querySelector(".toolbar");
+          const topMargin = toolbar.getBoundingClientRect().height + 24;
+          if (rect.top < topMargin || rect.bottom > window.innerHeight - 40) {
+            window.scrollBy({ top: rect.top - topMargin, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+          }
+        };
+        speakButton.addEventListener("click", () => {
+          if (reading) {
+            stopReading();
+            return;
+          }
+          const main = document.getElementById("conteudo");
+          const selection = window.getSelection();
+          const selectedRange = selection.rangeCount && !selection.isCollapsed ? selection.getRangeAt(0).cloneRange() : null;
+          const walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT);
+          const chunks = [];
+          let node;
+          while ((node = walker.nextNode())) {
+            const parent = node.parentElement;
+            if (!node.textContent.trim() || !parent || parent.closest("[hidden], script, style, button, select, label, .source-row") || !parent.getClientRects().length) continue;
+            if (selectedRange && !selectedRange.intersectsNode(node)) continue;
+            const start = selectedRange && selectedRange.startContainer === node ? selectedRange.startOffset : 0;
+            const end = selectedRange && selectedRange.endContainer === node ? selectedRange.endOffset : node.length;
+            const text = node.textContent.slice(start, end);
+            const pattern = /[^.!?\n]{1,200}(?:[.!?]+|\n|(?=\s)|$)|\S{1,200}/g;
+            for (const match of text.matchAll(pattern)) {
+              if (!match[0].trim()) continue;
+              const range = document.createRange();
+              range.setStart(node, start + match.index);
+              range.setEnd(node, start + match.index + match[0].length);
+              chunks.push({ text: match[0], range });
+            }
+          }
+          if (!chunks.length) return;
+          const currentId = ++readingId;
+          reading = true;
+          speechControls.hidden = false;
+          speakButton.setAttribute("aria-pressed", "true");
+          speakButton.innerHTML = '<span aria-hidden="true">⏹</span> Parar leitura';
+          const readChunk = (index) => {
+            if (currentId !== readingId) return;
+            if (paused) { continueReading = () => readChunk(index); return; }
+            if (index >= chunks.length) { resetSpeechButton(); return; }
+            const chunk = chunks[index];
+            const utterance = new SpeechSynthesisUtterance(chunk.text);
+            utterance.lang = "pt-BR";
+            utterance.rate = Number(rateSelect.value);
+            const voice = speech.getVoices().find((item) => item.voiceURI === voiceSelect.value);
+            if (voice) utterance.voice = voice;
+            utterance.onstart = () => { if (currentId === readingId && !paused) highlight(chunk.range); };
+            utterance.onend = () => readChunk(index + 1);
+            utterance.onerror = () => { if (currentId === readingId) resetSpeechButton(); };
+            speech.speak(utterance);
+          };
+          readChunk(0);
+        });
+      }
+      let fontSize = 1.08;
+      document.getElementById("larger").addEventListener("click", () => {
+        fontSize = Math.min(1.5, fontSize + 0.08);
+        root.style.setProperty("--body-size", `${fontSize}rem`);
+      });
+      document.getElementById("smaller").addEventListener("click", () => {
+        fontSize = Math.max(.9, fontSize - 0.08);
+        root.style.setProperty("--body-size", `${fontSize}rem`);
+      });
+      document.getElementById("readMode").addEventListener("click", (event) => {
+        const enabled = document.body.classList.toggle("dyslexia");
+        event.currentTarget.setAttribute("aria-pressed", String(enabled));
+        event.currentTarget.textContent = enabled ? "Leitura confortável: ativada" : "Leitura confortável";
+      });
+      document.getElementById("themeMode").addEventListener("click", (event) => {
+        const enabled = document.body.classList.toggle("dark");
+        event.currentTarget.setAttribute("aria-pressed", String(enabled));
+        event.currentTarget.textContent = enabled ? "Modo claro" : "Modo escuro";
+      });
+
+      const search = document.getElementById("search");
+      const cards = [...document.querySelectorAll(".study-card")];
+      const status = document.getElementById("searchStatus");
+      search.addEventListener("input", () => {
+        const term = search.value.trim().toLocaleLowerCase("pt-BR");
+        let visible = 0;
+        cards.forEach((card) => {
+          const matches = !term || card.textContent.toLocaleLowerCase("pt-BR").includes(term);
+          card.hidden = !matches;
+          if (matches) visible++;
+        });
+        document.querySelectorAll(".module").forEach((module) => {
+          module.hidden = ![...module.querySelectorAll(".study-card")].some((card) => !card.hidden);
+        });
+        status.textContent = term ? `${visible} ${visible === 1 ? "unidade encontrada" : "unidades encontradas"}.` : "";
+      });
+    })();
+  </script>
+</body>
+</html>
